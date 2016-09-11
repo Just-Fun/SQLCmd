@@ -35,4 +35,3 @@ public class MyServlet extends HttpServlet {
         super.doPost(request, response);
     }
 }
-

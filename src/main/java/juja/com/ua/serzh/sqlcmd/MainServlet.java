@@ -11,7 +11,7 @@ import java.io.PrintWriter;
 /**
  * Created by Serzh on 9/11/16.
  */
-@WebServlet("/")
+@WebServlet("/a")
 public class MainServlet extends HttpServlet {
 
     @Override

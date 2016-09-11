@@ -1,65 +1,58 @@
 package ua.com.juja.serzh.sqlcmd.model;
 
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.datasource.SingleConnectionDataSource;
+import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
+
 import java.sql.*;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Created by indigo on 21.08.2015.
+ */
+@Component
 public class JDBCDatabaseManager implements DatabaseManager {
 
     private Connection connection;
+    private JdbcTemplate template;
+    private String database;
+    private String userName;
 
     @Override
     public List<DataSet> getTableData(String tableName) {
-        List<DataSet> result = new LinkedList<DataSet>();
-
-        try (Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM public." + tableName))
-        {
-            ResultSetMetaData rsmd = rs.getMetaData();
-            while (rs.next()) {
-                DataSet dataSet = new DataSetImpl();
-                result.add(dataSet);
-                for (int i = 0; i < rsmd.getColumnCount(); i++) {
-                    dataSet.put(rsmd.getColumnName(i + 1), rs.getObject(i + 1));
+        return template.query("SELECT * FROM public." + tableName,
+                new RowMapper<DataSet>() {
+                    public DataSet mapRow(ResultSet rs, int rowNum) throws SQLException {
+                        ResultSetMetaData rsmd = rs.getMetaData();
+                        DataSet dataSet = new DataSetImpl();
+                        for (int i = 0; i < rsmd.getColumnCount(); i++) {
+                            dataSet.put(rsmd.getColumnName(i + 1), rs.getObject(i + 1));
+                        }
+                        return dataSet;
+                    }
                 }
-            }
-            return result;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return result;
-        }
+            );
     }
 
     @Override
     public int getSize(String tableName) {
-        try (Statement stmt = connection.createStatement();
-             ResultSet rsCount = stmt.executeQuery("SELECT COUNT(*) FROM public." + tableName))
-        {
-            rsCount.next();
-            int size = rsCount.getInt(1);
-            return size;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return 0;
-        }
+        return template.queryForObject("SELECT COUNT(*) FROM public." + tableName, Integer.class);
     }
 
     @Override
     public Set<String> getTableNames() {
-        Set<String> tables = new LinkedHashSet<>();
-        try (Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT table_name FROM information_schema.tables WHERE table_schema='public' AND table_type='BASE TABLE'"))
-        {
-            while (rs.next()) {
-                tables.add(rs.getString("table_name"));
-            }
-            return tables;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return tables;
-        }
+        return new LinkedHashSet<>(template.query("SELECT table_name FROM information_schema.tables WHERE table_schema='public' AND table_type='BASE TABLE'",
+                new RowMapper<String>() {
+                    public String mapRow(ResultSet rs, int rowNum) throws SQLException {
+                        return rs.getString("table_name");
+                    }
+                }
+        ));
     }
 
     @Override
@@ -76,8 +69,12 @@ public class JDBCDatabaseManager implements DatabaseManager {
             connection = DriverManager.getConnection(
                     "jdbc:postgresql://localhost:5432/" + database, userName,
                     password);
+            this.database = database;
+            this.userName = userName;
+            template = new JdbcTemplate(new SingleConnectionDataSource(connection, false));
         } catch (SQLException e) {
             connection = null;
+            template = null;
             throw new RuntimeException(
                     String.format("Cant get connection for model:%s user:%s",
                             database, userName),
@@ -87,70 +84,39 @@ public class JDBCDatabaseManager implements DatabaseManager {
 
     @Override
     public void clear(String tableName) {
-        try (Statement stmt = connection.createStatement()) {
-            stmt.executeUpdate("DELETE FROM public." + tableName);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        template.execute("DELETE FROM public." + tableName);
     }
 
     @Override
     public void create(String tableName, DataSet input) {
-        try (Statement stmt = connection.createStatement()) {
+        String tableNames = StringUtils.collectionToDelimitedString(input.getNames(), ",");
+        String values = StringUtils.collectionToDelimitedString(input.getValues(), ",", "'", "'");
 
-            String tableNames = getNameFormated(input, "%s,");
-            String values = getValuesFormated(input, "'%s',");
-
-            stmt.executeUpdate("INSERT INTO public." + tableName + " (" + tableNames + ")" +
-                    "VALUES (" + values + ")");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private String getValuesFormated(DataSet input, String format) {
-        String values = "";
-        for (Object value: input.getValues()) {
-            values += String.format(format, value);
-        }
-        values = values.substring(0, values.length() - 1);
-        return values;
+        template.update(String.format("INSERT INTO public.%s (%s) VALUES (%s)",
+                tableName, tableNames, values));
     }
 
     @Override
     public void update(String tableName, int id, DataSet newValue) {
-        String tableNames = getNameFormated(newValue, "%s = ?,");
+        String tableNames = StringUtils.collectionToDelimitedString(newValue.getNames(), ",", "", " = ?");
 
         String sql = "UPDATE public." + tableName + " SET " + tableNames + " WHERE id = ?";
-        try (PreparedStatement ps = connection.prepareStatement(sql)) {
 
-            int index = 1;
-            for (Object value : newValue.getValues()) {
-                ps.setObject(index, value);
-                index++;
-            }
-            ps.setInt(index, id);
+        List<Object> objects = new LinkedList<>(newValue.getValues());
+        objects.add(id);
 
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        template.update(sql, objects.toArray());
     }
 
     @Override
     public Set<String> getTableColumns(String tableName) {
-        Set<String> tables = new LinkedHashSet<String>();
-        try (Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM information_schema.columns WHERE table_schema = 'public' AND table_name = '" + tableName + "'"))
-        {
-            while (rs.next()) {
-                tables.add(rs.getString("column_name"));
-            }
-            return tables;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return tables;
-        }
+        return new LinkedHashSet<>(template.query("SELECT * FROM information_schema.columns WHERE table_schema = 'public' AND table_name = '" + tableName + "'",
+                new RowMapper<String>() {
+                    public String mapRow(ResultSet rs, int rowNum) throws SQLException {
+                        return rs.getString("column_name");
+                    }
+                }
+        ));
     }
 
     @Override
@@ -158,12 +124,13 @@ public class JDBCDatabaseManager implements DatabaseManager {
         return connection != null;
     }
 
-    private String getNameFormated(DataSet newValue, String format) {
-        String string = "";
-        for (String name : newValue.getNames()) {
-            string += String.format(format, name);
-        }
-        string = string.substring(0, string.length() - 1);
-        return string;
+    @Override
+    public String getDatabaseName() {
+        return database;
+    }
+
+    @Override
+    public String getUserName() {
+        return userName;
     }
 }

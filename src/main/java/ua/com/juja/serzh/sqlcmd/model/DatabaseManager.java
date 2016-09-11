@@ -3,6 +3,9 @@ package ua.com.juja.serzh.sqlcmd.model;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Created by indigo on 25.08.2015.
+ */
 public interface DatabaseManager {
 
     List<DataSet> getTableData(String tableName);
@@ -22,4 +25,8 @@ public interface DatabaseManager {
     Set<String> getTableColumns(String tableName);
 
     boolean isConnected();
+
+    String getDatabaseName();
+
+    String getUserName();
 }

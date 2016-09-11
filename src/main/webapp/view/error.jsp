@@ -5,8 +5,7 @@
         <title>SQLCmd</title>
     </head>
     <body>
-        <c:forEach items="${items}" var="item">
-            <a href="${item}">${item}</a><br>
-        </c:forEach>
+        Йойкс! Что-то пошло не так: ${message}<br>
+        <%@include file="footer.jsp" %>
     </body>
 </html>

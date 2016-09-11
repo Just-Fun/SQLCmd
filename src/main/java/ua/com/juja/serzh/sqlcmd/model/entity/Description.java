@@ -1,8 +1,5 @@
 package ua.com.juja.serzh.sqlcmd.model.entity;
 
-/**
- * Created by oleksandr.baglai on 16.01.2016.
- */
 public final class Description {
 
     private final String command;

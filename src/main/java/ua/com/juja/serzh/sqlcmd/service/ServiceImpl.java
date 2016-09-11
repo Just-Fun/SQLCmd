@@ -10,9 +10,6 @@ import ua.com.juja.serzh.sqlcmd.model.entity.UserAction;
 
 import java.util.*;
 
-/**
- * Created by oleksandr.baglai on 30.10.2015.
- */
 @Component
 @Transactional
 public abstract class ServiceImpl implements Service {

@@ -2,9 +2,6 @@ package ua.com.juja.serzh.sqlcmd.model.entity;
 
 import javax.persistence.*;
 
-/**
- * Created by oleksandr.baglai on 19.12.2015.
- */
 @Entity
 @Table(name = "user_actions", schema = "public")
 public class UserAction {

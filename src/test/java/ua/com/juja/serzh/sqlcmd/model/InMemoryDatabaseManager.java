@@ -2,9 +2,6 @@ package ua.com.juja.serzh.sqlcmd.model;
 
 import java.util.*;
 
-/**
- * Created by indigo on 25.08.2015.
- */
 public class InMemoryDatabaseManager implements DatabaseManager {
 
     private Map<String, List<DataSet>> tables = new LinkedHashMap<>();

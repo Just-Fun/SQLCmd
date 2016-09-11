@@ -12,9 +12,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-/**
- * Created by indigo on 21.08.2015.
- */
 @Component
 public class JDBCDatabaseManager implements DatabaseManager {
 

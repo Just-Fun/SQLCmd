@@ -1,8 +1,6 @@
 package ua.com.juja.serzh.sqlcmd.controller;
 
-/**
- * Created by oleksandr.baglai on 11.12.2015.
- */
+
 public class Connection {
 
     private String userName;

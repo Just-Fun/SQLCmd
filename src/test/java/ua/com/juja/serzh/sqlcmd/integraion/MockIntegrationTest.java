@@ -20,15 +20,6 @@ import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-//import org.openqa.selenium.By;
-//import org.openqa.selenium.WebDriver;
-//import org.openqa.selenium.htmlunit.HtmlUnitDriver;
-
-/**
- * User: oleksandr.baglai
- * Date: 11/18/12
- * Time: 4:47 PM
- */
 public class MockIntegrationTest {
     private WebDriver driver;
     private SpringMockerJettyRunner runner;

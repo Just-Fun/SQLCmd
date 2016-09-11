@@ -13,9 +13,6 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created by oleksandr.baglai on 27.11.2015.
- */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:test-application-context.xml")
 public class ServiceImplTest {

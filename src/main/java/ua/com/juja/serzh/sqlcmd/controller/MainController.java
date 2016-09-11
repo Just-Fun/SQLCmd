@@ -1,8 +1,5 @@
 package ua.com.juja.serzh.sqlcmd.controller;
 
-/**
- * Created by oleksandr.baglai on 11.12.2015.
- */
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

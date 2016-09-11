@@ -10,9 +10,6 @@ import ua.com.juja.serzh.sqlcmd.model.entity.UserAction;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-/**
- * Created by oleksandr.baglai on 26.12.2015.
- */
 public class UserActionRepositoryImpl implements UserActionRepositoryCustom {
 
     @PersistenceContext

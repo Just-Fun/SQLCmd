@@ -16,9 +16,7 @@ public class MainServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        PrintWriter out = resp.getWriter();
-        out.println("<h1>Hello Servlet!</h1>");
-        out.print("<h1>Just test</h1>");
+        req.getRequestDispatcher("mypage.jsp").forward(req, resp);
 
     }
 

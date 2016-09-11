@@ -1,17 +1,13 @@
 package juja.com.ua.serzh.sqlcmd.model;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
-/**
- * Created by serzh on 5/11/16.
- */
 public interface DatabaseManager {
 
-    List<Map<String, Object>> getTableData(String tableName);
+    List<DataSet> getTableData(String tableName);
 
-    Set<String> getDatabases();
+    int getSize(String tableName);
 
     Set<String> getTableNames();
 
@@ -19,27 +15,11 @@ public interface DatabaseManager {
 
     void clear(String tableName);
 
-    void createDatabase(String databaseName);
+    void create(String tableName, DataSet input);
 
-    void dropDatabase(String databaseName);
-
-    void createTable(String query);
-
-    void dropTable(String query);
-
-    void insert(String tableName, Map<String, Object> input);
-
-    void update(String tableName, int id, Map<String, Object> newValue);
+    void update(String tableName, int id, DataSet newValue);
 
     Set<String> getTableColumns(String tableName);
 
     boolean isConnected();
-
-    String getUser();
-
-    String getPassword();
-
-    String getDatabaseName();
-
-    int getTableSize(String tableName);
 }

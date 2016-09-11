@@ -7,8 +7,14 @@
     <groupId>juja.com.ua.serzh.sqlcmd</groupId>
     <artifactId>SQLCmd</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>war</packaging>
 
+    <packaging>war</packaging>
+    <name>sqlcmd</name>
+    <description>sqlcmd</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
     <build>
         <finalName>${project.artifactId}</finalName>
@@ -45,7 +51,13 @@
         </plugins>
     </build>
 
+
     <dependencies>
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -53,27 +65,24 @@
             <scope>provided</scope>
         </dependency>
 
-       <!-- <dependency>
-            <groupId>javaee</groupId>
-            <artifactId>javaee-api</artifactId>
-            <version>5</version>
-        </dependency>
-
         <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-web-api</artifactId>
-            <version>6.0</version>
-            <scope>provided</scope>
+            <groupId>postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.1-901-1.jdbc4</version>
         </dependency>
--->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.10.19</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
 
-        <!--      <dependency>
-                  <groupId>jstl</groupId>
-                  <artifactId>jstl</artifactId>
-                  <version>1.2</version>
-              </dependency>-->
     </dependencies>
-
-
 
 </project>

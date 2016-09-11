@@ -9,7 +9,9 @@ import ua.com.juja.serzh.sqlcmd.model.DataSet;
 import ua.com.juja.serzh.sqlcmd.model.DataSetImpl;
 import ua.com.juja.serzh.sqlcmd.model.DatabaseManager;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 
@@ -25,6 +27,7 @@ public class ServiceImplTest {
         // given
         DatabaseManager manager = service.connect("database", "user", "password");
 
+//        Map<String, Object> input = new LinkedHashMap<>();
         DataSet input = new DataSetImpl();
         input.put("id", 13);
         input.put("name", "Stiven");

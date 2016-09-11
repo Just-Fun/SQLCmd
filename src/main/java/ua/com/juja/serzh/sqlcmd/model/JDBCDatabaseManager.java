@@ -7,10 +7,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import java.sql.*;
-import java.util.LinkedHashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Component
 public class JDBCDatabaseManager implements DatabaseManager {
@@ -21,16 +18,16 @@ public class JDBCDatabaseManager implements DatabaseManager {
     private String userName;
 
     @Override
-    public List<DataSet> getTableData(String tableName) {
+    public List<Map<String, Object>> getTableData(String tableName) {
         return template.query("SELECT * FROM public." + tableName,
-                new RowMapper<DataSet>() {
-                    public DataSet mapRow(ResultSet rs, int rowNum) throws SQLException {
+                new RowMapper<Map<String, Object>>() {
+                    public Map<String, Object> mapRow(ResultSet rs, int rowNum) throws SQLException {
                         ResultSetMetaData rsmd = rs.getMetaData();
-                        DataSet dataSet = new DataSetImpl();
+                        Map<String, Object> result = new LinkedHashMap<>();
                         for (int i = 0; i < rsmd.getColumnCount(); i++) {
-                            dataSet.put(rsmd.getColumnName(i + 1), rs.getObject(i + 1));
+                            result.put(rsmd.getColumnName(i + 1), rs.getObject(i + 1));
                         }
-                        return dataSet;
+                        return result;
                     }
                 }
             );

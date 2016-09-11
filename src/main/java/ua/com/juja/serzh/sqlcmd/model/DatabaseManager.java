@@ -1,11 +1,12 @@
 package ua.com.juja.serzh.sqlcmd.model;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public interface DatabaseManager {
 
-    List<DataSet> getTableData(String tableName);
+    List<Map<String, Object>> getTableData(String tableName);
 
     int getSize(String tableName);
 

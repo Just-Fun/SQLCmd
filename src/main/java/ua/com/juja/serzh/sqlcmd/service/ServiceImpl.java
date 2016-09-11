@@ -55,13 +55,19 @@ public abstract class ServiceImpl implements Service {
 
     @Override
     public List<List<String>> find(DatabaseManager manager, String tableName) {
-        List<List<String>> result = new LinkedList<>();
-
+        List<Map<String, Object>> tableData = manager.getTableData(tableName);
         List<String> columns = new LinkedList<>(manager.getTableColumns(tableName));
-        List<DataSet> tableData = manager.getTableData(tableName);
 
+        List<List<String>> result = new LinkedList<>();
         result.add(columns);
-        for (DataSet dataSet : tableData) {
+        for (Map<String, Object> entry : tableData) {
+            List<String> row = new ArrayList<>();
+            for (String column : columns) {
+                row.add(entry.get(column).toString());
+            }
+            result.add(row);
+        }
+      /*  for (DataSet dataSet : tableData) {
             List<String> row = new ArrayList<>(columns.size());
             result.add(row);
             for (String column : columns) {
@@ -73,7 +79,7 @@ public abstract class ServiceImpl implements Service {
                 }
                 row.add(value.toString());
             }
-        }
+        }*/
 
         userActions.createAction(manager.getDatabaseName(), manager.getUserName(), "FIND(" + tableName +  ")");
 

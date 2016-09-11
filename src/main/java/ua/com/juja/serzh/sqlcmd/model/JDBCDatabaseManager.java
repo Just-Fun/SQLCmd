@@ -81,26 +81,6 @@ public class JDBCDatabaseManager implements DatabaseManager {
         template.execute("DELETE FROM public." + tableName);
     }
 
-    @Override
-    public void create(String tableName, DataSet input) {
-        String tableNames = StringUtils.collectionToDelimitedString(input.getNames(), ",");
-        String values = StringUtils.collectionToDelimitedString(input.getValues(), ",", "'", "'");
-
-        template.update(String.format("INSERT INTO public.%s (%s) VALUES (%s)",
-                tableName, tableNames, values));
-    }
-
-    @Override
-    public void update(String tableName, int id, DataSet newValue) {
-        String tableNames = StringUtils.collectionToDelimitedString(newValue.getNames(), ",", "", " = ?");
-
-        String sql = "UPDATE public." + tableName + " SET " + tableNames + " WHERE id = ?";
-
-        List<Object> objects = new LinkedList<>(newValue.getValues());
-        objects.add(id);
-
-        template.update(sql, objects.toArray());
-    }
 
     @Override
     public Set<String> getTableColumns(String tableName) {

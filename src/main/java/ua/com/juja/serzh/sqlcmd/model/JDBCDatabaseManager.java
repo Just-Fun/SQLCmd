@@ -1,4 +1,4 @@
-package juja.com.ua.serzh.sqlcmd.model;
+package ua.com.juja.serzh.sqlcmd.model;
 
 import java.sql.*;
 import java.util.LinkedHashSet;

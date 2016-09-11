@@ -16,6 +16,8 @@ public class MainServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
+        req.setAttribute("name", "Devcolibri");
+
         req.getRequestDispatcher("mypage.jsp").forward(req, resp);
 
     }

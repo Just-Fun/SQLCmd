@@ -79,7 +79,6 @@ public abstract class ServiceImpl implements Service {
         if (userName == null) {
             throw new IllegalArgumentException("User name cant be null!");
         }
-
         return userActions.findByUserName(userName);
     }
 }

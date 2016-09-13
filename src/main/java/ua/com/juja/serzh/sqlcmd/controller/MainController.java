@@ -40,9 +40,7 @@ public class MainController {
     }
 
     @RequestMapping(value = "/connect", method = RequestMethod.POST)
-    public String connecting(@ModelAttribute("connection") Connection connection,
-                             HttpSession session, Model model)
-    {
+    public String connecting(@ModelAttribute("connection") Connection connection, HttpSession session, Model model) {
         try {
             DatabaseManager manager = service.connect(connection.getDbName(),
                     connection.getUserName(), connection.getPassword());
@@ -56,8 +54,7 @@ public class MainController {
     }
 
     @RequestMapping(value = "/actions/{userName}", method = RequestMethod.GET)
-    public String actions(Model model,
-                         @PathVariable(value = "userName") String userName) {
+    public String actions(Model model, @PathVariable(value = "userName") String userName) {
         model.addAttribute("actions", service.getAllFor(userName));
 
         return "actions";

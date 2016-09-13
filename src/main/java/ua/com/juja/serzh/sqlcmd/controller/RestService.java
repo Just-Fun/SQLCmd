@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Set;
 
 @RestController
-// преобразователь в Json объекты :)
+// converter to Json objects :)
 public class RestService {
 
     @Autowired

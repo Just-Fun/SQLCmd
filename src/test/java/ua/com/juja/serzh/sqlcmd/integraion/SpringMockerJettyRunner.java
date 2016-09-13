@@ -31,7 +31,7 @@ public class SpringMockerJettyRunner extends JettyRunner {
             public void contextInit(WebAppContext context, ServletContext servletContext) {
                 String contextClass = context.getInitParameter(ContextLoader.CONTEXT_CLASS_PARAM);
                 if (!contextClass.equals(XmlWebApplicationContext.class.getName())) {
-                    throw new RuntimeException("Тип " + contextClass  + " не поддерживается!");
+                    throw new RuntimeException("Type " + contextClass  + " is not supported!");
                 }
                 context.setInitParameter(ContextLoader.CONTEXT_CLASS_PARAM, SpyXmlWebApplicationContext.class.getName());
                 SpyXmlWebApplicationContext.init(spies, mocks);

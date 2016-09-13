@@ -31,18 +31,15 @@ public abstract class ServiceImpl implements Service {
     public List<Description> commandsDescription() {
         return Arrays.asList(
                 new Description("connect",
-                        "Для подключения к базе данных, с которой будем " +
-                                "работать. При старте приложения ты " +
-                                "подключаешься, и в любой момент можешь " +
-                                "переподключиться к другой базе."),
+                        "To connect to a database, which will work."),
                 new Description("list",
-                        "Для получения списка таблиц текущей базы."),
+                        "For a list of current database tables."),
                 new Description("find",
-                        "Для получения содержимого выбранной таблицы"),
+                        "For the contents of the selected table."),
                 new Description("actions",
-                        "Для просмотра активностей пользователя"),
+                        "To view a user's activity."),
                 new Description("help",
-                        "Эта страничка с описанием возможностей приложения"));
+                        "This page is a description of the application possibilities."));
     }
 
     @Override
@@ -67,22 +64,7 @@ public abstract class ServiceImpl implements Service {
             }
             result.add(row);
         }
-      /*  for (DataSet dataSet : tableData) {
-            List<String> row = new ArrayList<>(columns.size());
-            result.add(row);
-            for (String column : columns) {
-                Object value = dataSet.get(column);
-                if (value == null) {
-                    throw new IllegalStateException(String.format(
-                            "Ожидалось колонка с именем %s но ее нет, а есть %s",
-                            column, dataSet));
-                }
-                row.add(value.toString());
-            }
-        }*/
-
         userActions.createAction(manager.getDatabaseName(), manager.getUserName(), "FIND(" + tableName +  ")");
-
         return result;
     }
 
@@ -90,15 +72,6 @@ public abstract class ServiceImpl implements Service {
     public Set<String> tables(DatabaseManager manager) {
         userActions.createAction(manager.getDatabaseName(), manager.getUserName(), "TABLES");
         return manager.getTableNames();
-    }
-
-    @Override // TODO удалить это оно в демо целях
-    public DatabaseConnection getDataFor(String userName, String dbName) {
-        DatabaseConnection databaseConnection = databaseConnections.findByUserNameAndDbName(userName, dbName);
-        databaseConnection.getUserActions().size();
-//        databaseConnection.getUserActions().get(1).setAction("CHANGED");
-//        databaseConnection.getUserActions().clear();
-        return databaseConnection;
     }
 
     @Override

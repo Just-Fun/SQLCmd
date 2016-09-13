@@ -2,11 +2,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <div id="help" style="display:none;">
-    <div>Существующие команды:</div>
+    <div>Existing commands:</div>
     <div>
         <dl class="container">
             <script template="row" type="text/x-jquery-tmpl">
-                <dt>{{= command}}</dt>
+                <a href="#/{{= command}}">{{= command}}</a></br>
                 <dd>{{= description}}</dd>
             </script>
         </dl>

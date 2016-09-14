@@ -5,17 +5,99 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
+import ua.com.juja.serzh.sqlcmd.model.repository.DriverException;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.*;
 import java.util.*;
 
 @Component
 public class JDBCDatabaseManager implements DatabaseManager {
 
+    static {
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new DriverException("Not installed PostgreSQL JDBC driver.", e);
+        }
+        loadProperties();
+    }
+
+    private static final String ERROR = "It is impossible because: ";
+    private static final String PROPERTIES_FILE = "src/main/resources/config.properties";
+    private static String host;
+    private static String port;
+
+    private static void loadProperties() {
+        Properties property = new Properties();
+        try (FileInputStream fis = new FileInputStream(PROPERTIES_FILE)) {
+            property.load(fis);
+            host = property.getProperty("host");
+            port = property.getProperty("port");
+        } catch (IOException e) {
+            throw new RuntimeException("Properties do not loaded. " + e.getCause());
+        }
+    }
+
     private Connection connection;
     private JdbcTemplate template;
     private String database;
     private String userName;
+    private String password;
+
+
+    @Override
+    public void connect(String database, String userName, String password) {
+        if (userName != null && password != null) {
+            this.userName = userName;
+            this.password = password;
+        }
+        this.database = database;
+
+        closeOpenedConnection();
+        getConnection();
+       /* try {
+            if (connection != null) {
+                connection.close();
+            }
+            connection = DriverManager.getConnection(
+                    "jdbc:postgresql://localhost:5432/" + database, userName,
+                    password);
+            this.database = database;
+            this.userName = userName;
+            template = new JdbcTemplate(new SingleConnectionDataSource(connection, false));
+        } catch (SQLException e) {
+            connection = null;
+            template = null;
+            throw new RuntimeException(
+                    String.format("Cant get connection for model:%s user:%s", database, userName), e);
+        }*/
+    }
+
+    private void getConnection() {
+        try {
+            String url = String.format("jdbc:postgresql://%s:%s/%s", host, port, database);
+            connection = DriverManager.getConnection(url, userName, password);
+            template = new JdbcTemplate(new SingleConnectionDataSource(connection, false));
+        } catch (SQLException e) {
+            connection = null;
+            template = null;
+            throw new DatabaseManagerException(
+                    String.format("Cant get connection for model:%s user:%s", database, userName), e);
+        }
+    }
+
+    private void closeOpenedConnection() {
+        if (connection != null) {
+            try {
+                connection.close();
+                connection = null;
+            } catch (SQLException e) {
+                throw new DatabaseManagerException(ERROR, e);
+            }
+        }
+    }
 
     @Override
     public List<Map<String, Object>> getTableData(String tableName) {
@@ -30,7 +112,7 @@ public class JDBCDatabaseManager implements DatabaseManager {
                         return result;
                     }
                 }
-            );
+        );
     }
 
     @Override
@@ -47,33 +129,6 @@ public class JDBCDatabaseManager implements DatabaseManager {
                     }
                 }
         ));
-    }
-
-    @Override
-    public void connect(String database, String userName, String password) {
-        try {
-            Class.forName("org.postgresql.Driver");
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException("Please add jdbc jar to project.", e);
-        }
-        try {
-            if (connection != null) {
-                connection.close();
-            }
-            connection = DriverManager.getConnection(
-                    "jdbc:postgresql://localhost:5432/" + database, userName,
-                    password);
-            this.database = database;
-            this.userName = userName;
-            template = new JdbcTemplate(new SingleConnectionDataSource(connection, false));
-        } catch (SQLException e) {
-            connection = null;
-            template = null;
-            throw new RuntimeException(
-                    String.format("Cant get connection for model:%s user:%s",
-                            database, userName),
-                    e);
-        }
     }
 
     @Override

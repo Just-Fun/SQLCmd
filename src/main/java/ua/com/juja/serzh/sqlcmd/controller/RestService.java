@@ -73,8 +73,8 @@ public class RestService {
     }
 */
 
-    @RequestMapping(value = "/tables/{table}/content", method = RequestMethod.GET)
-    public List<List<String>> tables(@PathVariable(value = "table") String table,
+    @RequestMapping(value = "/table/{table}/content", method = RequestMethod.GET)
+    public List<List<String>> table(@PathVariable(value = "table") String table,
                                      HttpServletRequest request) {
         DatabaseManager manager = getManager(request.getSession());
 

@@ -3,7 +3,7 @@ function init(ctx) {
     var hideAllScreens = function() {
         $('#list').hide();
         $('#menu').hide();
-        $('#tables').hide();
+        $('#table').hide();
         $('#actions').hide();
     }
 
@@ -14,8 +14,8 @@ function init(ctx) {
         var page = data[0];
         if (page == 'list') {
            initList();
-        } else if (page == 'tables') {
-           initTables(data[1]);
+        } else if (page == 'table') {
+           initTable(data[1]);
         } else if (page == 'menu') {
            initMenu();
         } else if (page == 'actions') {
@@ -71,13 +71,13 @@ function init(ctx) {
             });
         };
 
-    var initTables = function(tableName) {
-        isConnected("tables/" + tableName, function() {
-            show('#tables');
+    var initTable = function(tableName) {
+        isConnected("table/" + tableName, function() {
+            show('#table');
 
-            $.get(ctx + '/tables/' + tableName + '/content', function(elements) {
+            $.get(ctx + '/table/' + tableName + '/content', function(elements) {
                 $('#loading').hide(300, function() {
-                    $('#tables script').tmpl(elements).appendTo('#tables .container');
+                    $('#table script').tmpl(elements).appendTo('#table .container');
                 });
             });
         });

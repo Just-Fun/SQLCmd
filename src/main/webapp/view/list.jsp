@@ -2,9 +2,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <div id="list">
+    <div>Existing lists:</div>
     <div class="container">
         <script template type="text/x-jquery-tmpl">
-            <a href="#/tables/{{= $data}}">{{= $data}}</a></br>
+            <a href="#/table/{{= $data}}">{{= $data}}</a></br>
         </script>
     </div>
 </div>

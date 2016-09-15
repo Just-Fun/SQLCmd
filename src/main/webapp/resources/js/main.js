@@ -13,7 +13,7 @@ function init(ctx) {
 
         var page = data[0];
         if (page == 'tables') {
-           initList();
+           initTables();
         } else if (page == 'table') {
            initTable(data[1]);
         } else if (page == 'menu') {
@@ -47,7 +47,7 @@ function init(ctx) {
         component.show();
     }
 
-    var initList = function() {
+    var initTables = function() {
         isConnected("tables", function() {
             show('#tables');
 

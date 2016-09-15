@@ -10,8 +10,6 @@ import java.util.Set;
 
 public interface Service {
 
-    List<String> commandsList();
-
     List<Description> commandsDescription();
 
     DatabaseManager connect(String databaseName, String userName, String password);

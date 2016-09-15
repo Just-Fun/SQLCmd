@@ -24,9 +24,14 @@ public class RestService {
     @Autowired
     private Service service;
 
-    @RequestMapping(value = "/menu/content", method = RequestMethod.GET)
+    /*@RequestMapping(value = "/menu/content", method = RequestMethod.GET)
     public List<String> menuItems() {
         return service.commandsList();
+    }*/
+
+    @RequestMapping(value = "/menu/content", method = RequestMethod.GET)
+    public List<Description> menuItems() {
+        return service.commandsDescription();
     }
 
     @RequestMapping(value = "/help/content", method = RequestMethod.GET)

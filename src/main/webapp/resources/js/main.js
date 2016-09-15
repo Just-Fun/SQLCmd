@@ -4,7 +4,6 @@ function init(ctx) {
         $('#list').hide();
         $('#menu').hide();
         $('#tables').hide();
-        $('#help').hide();
         $('#actions').hide();
     }
 
@@ -19,8 +18,6 @@ function init(ctx) {
            initTables(data[1]);
         } else if (page == 'menu') {
            initMenu();
-        } else if (page == 'help') {
-           initHelp();
         } else if (page == 'actions') {
            initActions();
         } else {
@@ -92,16 +89,6 @@ function init(ctx) {
         $.get(ctx + "/menu/content", function(elements) {
             $("#loading").hide(300, function() {
                 $('#menu script').tmpl(elements).appendTo('#menu .container');
-            });
-        });
-    };
-
-    var initHelp = function() {
-        show('#help');
-
-        $.get(ctx + "/help/content", function(elements) {
-            $("#loading").hide(300, function() {
-                $('#help script').tmpl(elements).appendTo('#help .container');
             });
         });
     };

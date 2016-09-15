@@ -18,7 +18,6 @@
         <%@include file="list.jsp" %>
         <%@include file="menu.jsp" %>
         <%@include file="tables.jsp" %>
-        <%@include file="help.jsp" %>
         <%@include file="actions.jsp" %>
         <%@include file="footer.jsp" %>
     </body>

@@ -23,23 +23,14 @@ public abstract class ServiceImpl implements Service {
     private DatabaseConnectionRepository databaseConnections;
 
     @Override
-    public List<String> commandsList() {
-        return Arrays.asList("help", "list", "actions");
-    }
-
-    @Override
     public List<Description> commandsDescription() {
         return Arrays.asList(
                 new Description("connect",
                         "To connect to a database, which will work."),
                 new Description("list",
                         "For a list of current database tables."),
-                new Description("find",
-                        "For the contents of the selected table."),
                 new Description("actions",
-                        "To view a user's activity."),
-                new Description("help",
-                        "This page is a description of the application possibilities."));
+                        "To view a user's activity."));
     }
 
     @Override

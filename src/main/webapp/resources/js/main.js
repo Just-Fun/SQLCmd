@@ -1,7 +1,7 @@
 function init(ctx) {
 
     var hideAllScreens = function() {
-        $('#list').hide();
+        $('#tables').hide();
         $('#menu').hide();
         $('#table').hide();
         $('#actions').hide();
@@ -12,7 +12,7 @@ function init(ctx) {
         $("#loading").show();
 
         var page = data[0];
-        if (page == 'list') {
+        if (page == 'tables') {
            initList();
         } else if (page == 'table') {
            initTable(data[1]);
@@ -48,12 +48,12 @@ function init(ctx) {
     }
 
     var initList = function() {
-        isConnected("list", function() {
-            show('#list');
+        isConnected("tables", function() {
+            show('#tables');
 
-            $.get(ctx + "/list/content", function(elements) {
+            $.get(ctx + "/tables/content", function(elements) {
                 $("#loading").hide(300, function() {
-                    $('#list script').tmpl(elements).appendTo('#list .container');
+                    $('#tables script').tmpl(elements).appendTo('#tables .container');
                 });
             });
         });

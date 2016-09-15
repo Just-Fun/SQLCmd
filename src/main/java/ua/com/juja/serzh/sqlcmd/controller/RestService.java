@@ -39,8 +39,8 @@ public class RestService {
         return service.commandsDescription();
     }
 
-    @RequestMapping(value = "/list/content", method = RequestMethod.GET)
-    public Set<String> list(HttpServletRequest request) {
+    @RequestMapping(value = "/tables/content", method = RequestMethod.GET)
+    public Set<String> tables(HttpServletRequest request) {
         DatabaseManager manager = getManager(request.getSession());
         if (manager == null) {
             return new HashSet<>();

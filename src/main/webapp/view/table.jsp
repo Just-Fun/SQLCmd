@@ -13,5 +13,5 @@
             </tr>
         </script>
     </table>
-    <a href="main#/list">list</a></br>
+    <a href="main#/tables">tables</a></br>
 </div>

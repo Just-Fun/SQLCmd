@@ -27,7 +27,7 @@ public abstract class ServiceImpl implements Service {
         return Arrays.asList(
                 new Description("connect",
                         "To connect to a database, which will work."),
-                new Description("list",
+                new Description("tables",
                         "For a list of current database tables."),
                 new Description("actions",
                         "To view a user's activity."));

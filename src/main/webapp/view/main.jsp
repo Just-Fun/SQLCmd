@@ -15,7 +15,7 @@
     </head>
     <body>
         <div id="loading" style="display:none;">Loading...</div>
-        <%@include file="list.jsp" %>
+        <%@include file="tables.jsp" %>
         <%@include file="menu.jsp" %>
         <%@include file="table.jsp" %>
         <%@include file="actions.jsp" %>

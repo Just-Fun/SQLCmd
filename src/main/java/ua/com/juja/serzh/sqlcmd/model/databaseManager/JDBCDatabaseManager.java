@@ -1,10 +1,9 @@
-package ua.com.juja.serzh.sqlcmd.model;
+package ua.com.juja.serzh.sqlcmd.model.databaseManager;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
-import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
+import ua.com.juja.serzh.sqlcmd.model.DatabaseManager;
 import ua.com.juja.serzh.sqlcmd.model.repository.DriverException;
 
 import java.io.FileInputStream;
@@ -12,7 +11,8 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.*;
 
-@Component
+//@Component/*("JDBCDatabaseManager")*/ //() ?
+//@Scope(value = "prototype") // ?
 public class JDBCDatabaseManager implements DatabaseManager {
 
     static {

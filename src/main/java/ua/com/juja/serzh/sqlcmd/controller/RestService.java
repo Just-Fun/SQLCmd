@@ -2,7 +2,6 @@ package ua.com.juja.serzh.sqlcmd.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -60,7 +59,7 @@ public class RestService {
     public List<UserAction> actions(HttpServletRequest request) {
         DatabaseManager manager = getManager(request.getSession());
         if (manager == null) {
-            return new ArrayList<>();
+            return new ArrayList<>(Arrays.asList(new UserAction("Empty",new DatabaseConnection("EmptyConnection", "db"))));
         }
         return service.getAll();
 //        return Arrays.asList(new UserAction("Proba", new DatabaseConnection("Name", "db")));

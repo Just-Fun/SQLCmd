@@ -2,8 +2,8 @@ package ua.com.juja.serzh.sqlcmd.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 import ua.com.juja.serzh.sqlcmd.model.*;
+import ua.com.juja.serzh.sqlcmd.model.DatabaseManager;
 import ua.com.juja.serzh.sqlcmd.model.entity.DatabaseConnection;
 import ua.com.juja.serzh.sqlcmd.model.entity.Description;
 import ua.com.juja.serzh.sqlcmd.model.entity.UserAction;
@@ -11,7 +11,7 @@ import ua.com.juja.serzh.sqlcmd.model.entity.UserAction;
 import java.util.*;
 
 @Component
-@Transactional
+//@Transactional //?
 public abstract class ServiceImpl implements Service {
 
     protected abstract DatabaseManager getManager();
@@ -77,6 +77,7 @@ public abstract class ServiceImpl implements Service {
     public List<UserAction> getAll() {
         List<UserAction> result = new LinkedList<>();
         for (UserAction action: userActions.findAll()) {
+//            result.add(new UserAction(action.getAction(), action.getConnection()));
             result.add(new UserAction(action.getAction(), new DatabaseConnection("Name", "db")));
         }
         return result;

@@ -1,4 +1,4 @@
-package ua.com.juja.serzh.sqlcmd.model;
+package ua.com.juja.serzh.sqlcmd.model.databaseManager;
 
 /**
  * Created by serzh on 31.05.16.

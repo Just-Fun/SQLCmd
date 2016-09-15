@@ -20,7 +20,7 @@
 
     <bean id="emf"
           class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="packagesToScan" value="ua.com.juja.serzh.sqlcmd.model.entity" />
+        <property name="packagesToScan" value="ua.com.juja.serzh.sqlcmd" />
         <property name="dataSource" ref="logDataSource" />
 
         <property name="jpaProperties">

@@ -135,6 +135,11 @@ public class JDBCDatabaseManager implements DatabaseManager {
     public void clear(String tableName) {
         template.execute("DELETE FROM public." + tableName);
     }
+/*    @Override
+    public void clear(String tableName) {
+        template.update(String.format("DELETE FROM public.%s", tableName));
+    }*/
+
 
 
     @Override

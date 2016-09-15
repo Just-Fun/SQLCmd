@@ -53,12 +53,19 @@ public class MainController {
         }
     }
 
-    @RequestMapping(value = "/actions/{userName}", method = RequestMethod.GET)
+   /* @RequestMapping(value = "/actions/{userName}", method = RequestMethod.GET)
     public String actions(Model model, @PathVariable(value = "userName") String userName) {
         model.addAttribute("actions", service.getAllFor(userName));
 
         return "actions";
-    }
+    }*/
+
+    /*@RequestMapping(value = "/actions", method = RequestMethod.GET)
+    public String actions(Model model) {
+        model.addAttribute("actions", service.getAll());
+
+        return "actions";
+    }*/
 
     private DatabaseManager getManager(HttpSession session) {
         return (DatabaseManager) session.getAttribute("db_manager");

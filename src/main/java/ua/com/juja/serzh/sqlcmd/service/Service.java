@@ -23,4 +23,6 @@ public interface Service {
     DatabaseConnection getDataFor(String userName, String dbName);
 
     List<UserAction> getAllFor(String userName);
+
+    List<UserAction> getAll();
 }

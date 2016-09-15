@@ -1,14 +1,15 @@
 package ua.com.juja.serzh.sqlcmd;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 /**
  * Created by Serzh on 9/12/16.
  */
 public class Temp {
     public static void main(String[] args) {
-        int[] array = new int[]{1, 2, 3, 5, 7};
-        bubbleSort(array, 4);
+        int arg = 0b1111_0000;
+        System.out.println(Integer.toBinaryString(arg));
     }
 
     private static void bubbleSort(int[] array, int num) {
@@ -21,7 +22,7 @@ public class Temp {
             } else if (num > array[middle]) {
                 low = middle + 1;
             } else {
-                System.out.println("ans index: " + middle );
+                System.out.println("ans index: " + middle);
                 return;
             }
         }

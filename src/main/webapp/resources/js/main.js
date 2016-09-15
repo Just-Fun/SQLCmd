@@ -1,5 +1,33 @@
 function init(ctx) {
 
+    var hideAllScreens = function() {
+        $('#list').hide();
+        $('#menu').hide();
+        $('#tables').hide();
+        $('#help').hide();
+        $('#actions').hide();
+    }
+
+    var loadPage = function(data) {
+        hideAllScreens();
+        $("#loading").show();
+
+        var page = data[0];
+        if (page == 'list') {
+           initList();
+        } else if (page == 'tables') {
+           initTables(data[1]);
+        } else if (page == 'menu') {
+           initMenu();
+        } else if (page == 'help') {
+           initHelp();
+        } else if (page == 'actions') {
+           initActions();
+        } else {
+           window.location.hash = "/menu";
+        }
+    }
+
     var isConnected = function(fromPage, onConnected) {
         $.get(ctx + "/connected", function(isConnected) {
             if (isConnected) {
@@ -34,6 +62,18 @@ function init(ctx) {
         });
     };
 
+     var initActions = function() {
+            isConnected("actions", function() {
+                show('#actions');
+
+                $.get(ctx + "/actions/content", function(elements) {
+                    $("#loading").hide(300, function() {
+                        $('#actions script').tmpl(elements).appendTo('#actions .container');
+                    });
+                });
+            });
+        };
+
     var initTables = function(tableName) {
         isConnected("tables/" + tableName, function() {
             show('#tables');
@@ -65,31 +105,6 @@ function init(ctx) {
             });
         });
     };
-
-    var hideAllScreens = function() {
-        $('#list').hide();
-        $('#tables').hide();
-        $('#menu').hide();
-        $('#help').hide();
-    }
-
-    var loadPage = function(data) {
-        hideAllScreens();
-        $("#loading").show();
-
-        var page = data[0];
-        if (page == 'list') {
-           initList();
-        } else if (page == 'tables') {
-           initTables(data[1]);
-        } else if (page == 'menu') {
-           initMenu();
-        } else if (page == 'help') {
-           initHelp();
-        } else {
-           window.location.hash = "/menu";
-        }
-    }
 
     var load = function() {
         var hash = window.location.hash.substring(1);

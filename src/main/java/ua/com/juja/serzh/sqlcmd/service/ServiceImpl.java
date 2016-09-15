@@ -24,7 +24,7 @@ public abstract class ServiceImpl implements Service {
 
     @Override
     public List<String> commandsList() {
-        return Arrays.asList("help", "list");
+        return Arrays.asList("help", "list", "actions");
     }
 
     @Override
@@ -74,11 +74,21 @@ public abstract class ServiceImpl implements Service {
         return manager.getTableNames();
     }
 
-    @Override
+   /* @Override
     public List<UserAction> getAllFor(String userName) {
         if (userName == null) {
             throw new IllegalArgumentException("User name cant be null!");
         }
         return userActions.findByUserName(userName);
+    }*/
+
+    @Override
+    public List<UserAction> getAll() {
+        List<UserAction> result = new LinkedList<>();
+        for (UserAction action: userActions.findAll()) {
+            result.add(new UserAction(action.getAction(), new DatabaseConnection("Name", "db")));
+        }
+        return result;
+//        return userActions.findAll();
     }
 }

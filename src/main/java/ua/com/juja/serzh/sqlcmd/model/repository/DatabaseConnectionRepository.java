@@ -1,4 +1,4 @@
-package ua.com.juja.serzh.sqlcmd.model;
+package ua.com.juja.serzh.sqlcmd.model.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import ua.com.juja.serzh.sqlcmd.model.entity.DatabaseConnection;

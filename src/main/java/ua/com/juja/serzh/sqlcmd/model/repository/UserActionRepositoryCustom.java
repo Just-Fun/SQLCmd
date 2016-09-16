@@ -1,4 +1,4 @@
-package ua.com.juja.serzh.sqlcmd.model;
+package ua.com.juja.serzh.sqlcmd.model.repository;
 
 public interface UserActionRepositoryCustom {
 

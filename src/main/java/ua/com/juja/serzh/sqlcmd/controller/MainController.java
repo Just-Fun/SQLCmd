@@ -28,6 +28,8 @@ public class MainController {
         Connection connection = new Connection(page);
         if (fromPage != null) {
             connection.setFromPage(fromPage);
+        } else {
+            connection.setFromPage("/menu");
         }
         model.addAttribute("connection", connection);
 
@@ -36,6 +38,7 @@ public class MainController {
         } else {
             return "menu";
         }
+//        return "connect";
     }
 
     @RequestMapping(value = "/connect", method = RequestMethod.POST)

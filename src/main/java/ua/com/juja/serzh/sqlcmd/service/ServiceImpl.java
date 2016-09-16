@@ -2,6 +2,7 @@ package ua.com.juja.serzh.sqlcmd.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import ua.com.juja.serzh.sqlcmd.controller.UserActionLog;
 import ua.com.juja.serzh.sqlcmd.model.*;
 import ua.com.juja.serzh.sqlcmd.model.DatabaseManager;
 import ua.com.juja.serzh.sqlcmd.model.entity.DatabaseConnection;
@@ -37,7 +38,7 @@ public abstract class ServiceImpl implements Service {
     public DatabaseManager connect(String databaseName, String userName, String password) {
         DatabaseManager manager = getManager();
         manager.connect(databaseName, userName, password);
-        userActions.createAction(databaseName, userName, "CONNECT");
+        userActions.createAction(userName, databaseName, "CONNECT");
         return manager;
     }
 
@@ -55,13 +56,13 @@ public abstract class ServiceImpl implements Service {
             }
             result.add(row);
         }
-        userActions.createAction(manager.getDatabaseName(), manager.getUserName(), "FIND(" + tableName +  ")");
+        userActions.createAction(manager.getUserName(), manager.getDatabaseName(), "FIND(" + tableName +  ")");
         return result;
     }
 
     @Override
     public Set<String> tables(DatabaseManager manager) {
-        userActions.createAction(manager.getDatabaseName(), manager.getUserName(), "TABLES");
+        userActions.createAction(manager.getUserName(), manager.getDatabaseName(), "TABLES");
         return manager.getTableNames();
     }
 
@@ -73,14 +74,25 @@ public abstract class ServiceImpl implements Service {
         return userActions.findByUserName(userName);
     }*/
 
-    @Override
+    /*@Override
     public List<UserAction> getAll() {
         List<UserAction> result = new LinkedList<>();
         for (UserAction action: userActions.findAll()) {
 //            result.add(new UserAction(action.getAction(), action.getConnection()));
-            result.add(new UserAction(action.getAction(), new DatabaseConnection("Name", "db")));
+//            result.add(new UserAction(action.getAction(), new DatabaseConnection("Name", "db")));
+            result.add(new UserAction(action.getAction(),
+                    new DatabaseConnection(action.getConnection().getUserName(), action.getConnection().getDbName())));
         }
         return result;
 //        return userActions.findAll();
+    }*/
+
+    @Override
+    public List<UserActionLog> getAll() {
+        List<UserActionLog> result = new LinkedList<>();
+        for (UserAction action: userActions.findAll()) {
+            result.add(new UserActionLog(action));
+        }
+        return result;
     }
 }

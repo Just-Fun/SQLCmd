@@ -2,10 +2,25 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="actions">
     <table border="1" class="container">
+        <tr>
+            <td>Username</td>
+            <td>Actions</td>
+            <td>Database</td>
+            <td>Date</td>
+        </tr>
         <script template type="text/x-jquery-tmpl">
             <tr>
                 <td>
+                    {{= username}}
+                </td>
+                <td>
                     {{= action}}
+                </td>
+                 <td>
+                    {{= database}}
+                </td>
+                 <td>
+                    {{= date}}
                 </td>
             </tr>
         </script>

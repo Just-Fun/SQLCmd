@@ -1,5 +1,6 @@
 package ua.com.juja.serzh.sqlcmd.service;
 
+import ua.com.juja.serzh.sqlcmd.controller.UserActionLog;
 import ua.com.juja.serzh.sqlcmd.model.DatabaseManager;
 import ua.com.juja.serzh.sqlcmd.model.entity.DatabaseConnection;
 import ua.com.juja.serzh.sqlcmd.model.entity.Description;
@@ -22,5 +23,5 @@ public interface Service {
 
     List<UserAction> getAllFor(String userName);
 
-    List<UserAction> getAll();
+    List<UserActionLog> getAll();
 }

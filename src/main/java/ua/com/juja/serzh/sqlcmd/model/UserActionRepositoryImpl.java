@@ -20,13 +20,14 @@ public class UserActionRepositoryImpl implements UserActionRepositoryCustom {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
-    public void createAction(String databaseName, String userName, String action) {
+    public void createAction(String userName, String databaseName, String action) {
         DatabaseConnection databaseConnection = databaseConnections.findByUserNameAndDbName(userName, databaseName);
         if (databaseConnection == null) {
             databaseConnection = databaseConnections.save(new DatabaseConnection(userName, databaseName));
         }
-        UserAction userAction = new UserAction(action, databaseConnection);
+       /* UserAction userAction = new UserAction(action, databaseConnection);
         Session session = (Session) entityManager.getDelegate();
-        session.persist(userAction);
+        session.persist(userAction);*/
+        entityManager.persist(new UserAction(action, System.currentTimeMillis(), databaseConnection));
     }
 }

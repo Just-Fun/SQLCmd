@@ -2,6 +2,6 @@ package ua.com.juja.serzh.sqlcmd.model;
 
 public interface UserActionRepositoryCustom {
 
-    void createAction(String databaseName, String userName, String action);
+    void createAction(String userName, String databaseName, String action);
 
 }

@@ -56,10 +56,10 @@ public class RestService {
     }*/
 
     @RequestMapping(value = "/actions/content", method = RequestMethod.GET)
-    public List<UserAction> actions(HttpServletRequest request) {
+    public List<UserActionLog> actions(HttpServletRequest request) {
         DatabaseManager manager = getManager(request.getSession());
         if (manager == null) {
-            return new ArrayList<>(Arrays.asList(new UserAction("Empty",new DatabaseConnection("EmptyConnection", "db"))));
+            return new ArrayList<>();
         }
         return service.getAll();
 //        return Arrays.asList(new UserAction("Proba", new DatabaseConnection("Name", "db")));

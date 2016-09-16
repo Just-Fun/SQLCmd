@@ -4,7 +4,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
 import org.springframework.stereotype.Component;
-import ua.com.juja.serzh.sqlcmd.model.repository.DriverException;
 
 import java.io.FileInputStream;
 import java.io.IOException;

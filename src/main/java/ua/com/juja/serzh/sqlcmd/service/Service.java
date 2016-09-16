@@ -1,7 +1,7 @@
 package ua.com.juja.serzh.sqlcmd.service;
 
 import ua.com.juja.serzh.sqlcmd.controller.UserActionLog;
-import ua.com.juja.serzh.sqlcmd.model.DatabaseManager;
+import ua.com.juja.serzh.sqlcmd.model.databaseManager.DatabaseManager;
 import ua.com.juja.serzh.sqlcmd.model.entity.DatabaseConnection;
 import ua.com.juja.serzh.sqlcmd.model.entity.Description;
 import ua.com.juja.serzh.sqlcmd.model.entity.UserAction;

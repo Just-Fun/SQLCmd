@@ -6,10 +6,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import ua.com.juja.serzh.sqlcmd.model.DatabaseManager;
-import ua.com.juja.serzh.sqlcmd.model.entity.DatabaseConnection;
+import ua.com.juja.serzh.sqlcmd.model.databaseManager.DatabaseManager;
 import ua.com.juja.serzh.sqlcmd.model.entity.Description;
-import ua.com.juja.serzh.sqlcmd.model.entity.UserAction;
 import ua.com.juja.serzh.sqlcmd.service.Service;
 
 import javax.servlet.http.HttpServletRequest;

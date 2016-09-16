@@ -4,8 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ua.com.juja.serzh.sqlcmd.controller.UserActionLog;
 import ua.com.juja.serzh.sqlcmd.model.*;
-import ua.com.juja.serzh.sqlcmd.model.DatabaseManager;
-import ua.com.juja.serzh.sqlcmd.model.entity.DatabaseConnection;
+import ua.com.juja.serzh.sqlcmd.model.databaseManager.DatabaseManager;
 import ua.com.juja.serzh.sqlcmd.model.entity.Description;
 import ua.com.juja.serzh.sqlcmd.model.entity.UserAction;
 

@@ -1,6 +1,6 @@
 package ua.com.juja.serzh.sqlcmd.service;
 
-import ua.com.juja.serzh.sqlcmd.model.DatabaseManager;
+import ua.com.juja.serzh.sqlcmd.model.databaseManager.DatabaseManager;
 
 public class DatabaseManagerFactoryImpl implements DatabaseManagerFactory {
 

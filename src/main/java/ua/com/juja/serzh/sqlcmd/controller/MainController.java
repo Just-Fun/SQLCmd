@@ -23,9 +23,10 @@ public class MainController {
     @RequestMapping(value = "/connect", method = RequestMethod.GET)
     public String connect(HttpSession session, Model model,
                           @RequestParam(required = false, value = "fromPage") String fromPage) {
-        String page = (String) session.getAttribute("from-page");
-        session.removeAttribute("from-page");
-        Connection connection = new Connection(page);
+//        String page = (String) session.getAttribute("from-page");
+//        session.removeAttribute("from-page");
+//        Connection connection = new Connection(page);
+        Connection connection = new Connection(fromPage);
         if (fromPage != null) {
             connection.setFromPage(fromPage);
         } else {
@@ -33,12 +34,12 @@ public class MainController {
         }
         model.addAttribute("connection", connection);
 
-        if (getManager(session) == null) {
+       /* if (getManager(session) == null) {
             return "connect";
         } else {
             return "menu";
-        }
-//        return "connect";
+        }*/
+        return "connect";
     }
 
     @RequestMapping(value = "/connect", method = RequestMethod.POST)
@@ -54,20 +55,6 @@ public class MainController {
             return "error";
         }
     }
-
-   /* @RequestMapping(value = "/actions/{userName}", method = RequestMethod.GET)
-    public String actions(Model model, @PathVariable(value = "userName") String userName) {
-        model.addAttribute("actions", service.getAllFor(userName));
-
-        return "actions";
-    }*/
-
-    /*@RequestMapping(value = "/actions", method = RequestMethod.GET)
-    public String actions(Model model) {
-        model.addAttribute("actions", service.getAll());
-
-        return "actions";
-    }*/
 
     private DatabaseManager getManager(HttpSession session) {
         return (DatabaseManager) session.getAttribute("db_manager");

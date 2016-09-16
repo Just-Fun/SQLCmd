@@ -2,10 +2,7 @@ package ua.com.juja.serzh.sqlcmd.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ua.com.juja.serzh.sqlcmd.model.databaseManager.DatabaseManager;
 import ua.com.juja.serzh.sqlcmd.model.entity.Description;
 import ua.com.juja.serzh.sqlcmd.service.Service;
@@ -87,6 +84,17 @@ public class RestService {
         DatabaseManager manager = getManager(request.getSession());
         return manager != null;
     }
+/*
+    @RequestMapping(value = {"/connect"}, method = RequestMethod.POST)
+    public String login(HttpSession session, @ModelAttribute("connection") Connection connection) {
+        try {
+            DatabaseManager manager = service.connect(connection.getDbName(),
+                    connection.getUserName(), connection.getPassword());
+            return null;
+        } catch (RuntimeException e) {
+            return e.getMessage();
+        }
+    }*/
 
     private DatabaseManager getManager(HttpSession session) {
         return (DatabaseManager) session.getAttribute("db_manager");

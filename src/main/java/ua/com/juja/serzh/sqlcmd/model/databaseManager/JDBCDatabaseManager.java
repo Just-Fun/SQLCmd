@@ -56,22 +56,6 @@ public class JDBCDatabaseManager implements DatabaseManager {
 
         closeOpenedConnection();
         getConnection();
-       /* try {
-            if (connection != null) {
-                connection.close();
-            }
-            connection = DriverManager.getConnection(
-                    "jdbc:postgresql://localhost:5432/" + database, userName,
-                    password);
-            this.database = database;
-            this.userName = userName;
-            template = new JdbcTemplate(new SingleConnectionDataSource(connection, false));
-        } catch (SQLException e) {
-            connection = null;
-            template = null;
-            throw new RuntimeException(
-                    String.format("Cant get connection for model:%s user:%s", database, userName), e);
-        }*/
     }
 
     private void getConnection() {

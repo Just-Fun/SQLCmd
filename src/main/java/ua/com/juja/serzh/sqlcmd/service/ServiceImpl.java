@@ -45,7 +45,8 @@ public abstract class ServiceImpl implements Service {
     @Override
     public List<List<String>> find(DatabaseManager manager, String tableName) {
         List<Map<String, Object>> tableData = manager.getTableData(tableName);
-        List<String> columns = new LinkedList<>(manager.getTableColumns(tableName));
+        Set<String> tableColumns = manager.getTableColumns(tableName);
+        List<String> columns = new LinkedList<>(tableColumns);
 
         List<List<String>> result = new LinkedList<>();
         result.add(columns);
@@ -65,27 +66,6 @@ public abstract class ServiceImpl implements Service {
         userActions.createAction(manager.getUserName(), manager.getDatabaseName(), "TABLES");
         return manager.getTableNames();
     }
-
-   /* @Override
-    public List<UserAction> getAllFor(String userName) {
-        if (userName == null) {
-            throw new IllegalArgumentException("User name cant be null!");
-        }
-        return userActions.findByUserName(userName);
-    }*/
-
-    /*@Override
-    public List<UserAction> getAll() {
-        List<UserAction> result = new LinkedList<>();
-        for (UserAction action: userActions.findAll()) {
-//            result.add(new UserAction(action.getAction(), action.getConnection()));
-//            result.add(new UserAction(action.getAction(), new DatabaseConnection("Name", "db")));
-            result.add(new UserAction(action.getAction(),
-                    new DatabaseConnection(action.getConnection().getUserName(), action.getConnection().getDatabase())));
-        }
-        return result;
-//        return userActions.findAll();
-    }*/
 
     @Override
     public List<UserActionLog> getAll() {

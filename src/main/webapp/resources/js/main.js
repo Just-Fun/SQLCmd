@@ -13,15 +13,17 @@ function init(ctx) {
 
         var page = data[0];
         if (page == 'tables') {
-           initTables();
+            initTables();
         } else if (page == 'table') {
-           initTable(data[1]);
+            initTable(data[1]);
         } else if (page == 'menu') {
-           initMenu();
+            initMenu();
         } else if (page == 'actions') {
-           initActions();
+            initActions();
+        } else if (page == 'connect') {
+            gotoConnectPage("menu");
         } else {
-           window.location.hash = "/menu";
+            window.location.hash = "/menu";
         }
     }
 

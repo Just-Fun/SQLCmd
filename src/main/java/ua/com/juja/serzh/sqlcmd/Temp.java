@@ -5,6 +5,6 @@ package ua.com.juja.serzh.sqlcmd;
  */
 public class Temp {
     public static void main(String[] args) {
-
+        System.out.println("Hi!");
     }
 }

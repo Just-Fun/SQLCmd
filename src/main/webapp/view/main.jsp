@@ -18,6 +18,7 @@
         <%@include file="tables.jsp" %>
         <%@include file="menu.jsp" %>
         <%@include file="table.jsp" %>
+        <%@include file="connect.jsp" %>
         <%@include file="actions.jsp" %>
         <%@include file="footer.jsp" %>
     </body>

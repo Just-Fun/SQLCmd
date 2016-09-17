@@ -5,7 +5,7 @@ public class Connection {
 
     private String userName;
     private String password;
-    private String dbName;
+    private String database;
     private String fromPage;
 
     public Connection() {
@@ -32,12 +32,12 @@ public class Connection {
         this.password = password;
     }
 
-    public String getDbName() {
-        return dbName;
+    public String getDatabase() {
+        return database;
     }
 
-    public void setDbName(String dbName) {
-        this.dbName = dbName;
+    public void setDatabase(String database) {
+        this.database = database;
     }
 
     public String getFromPage() {

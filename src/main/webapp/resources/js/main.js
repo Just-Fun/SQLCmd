@@ -1,10 +1,18 @@
 function init(ctx) {
 
+ var fromPage = null;
+
+    var showFromPage = function() {
+        window.location.hash = fromPage;
+        fromPage = null;
+    }
+
     var hideAllScreens = function() {
         $('#tables').hide();
         $('#menu').hide();
         $('#table').hide();
         $('#actions').hide();
+        $('#connecting-form').hide();
     }
 
     var loadPage = function(data) {
@@ -21,13 +29,13 @@ function init(ctx) {
         } else if (page == 'actions') {
             initActions();
         } else if (page == 'connect') {
-            gotoConnectPage("menu");
+            initConnect();
         } else {
             window.location.hash = "/menu";
         }
     }
 
-    var isConnected = function(fromPage, onConnected) {
+   /* var isConnected = function(fromPage, onConnected) {
         $.get(ctx + "/connected", function(isConnected) {
             if (isConnected) {
                 if (!!onConnected) {
@@ -37,7 +45,20 @@ function init(ctx) {
                 gotoConnectPage(fromPage);
             }
         });
-    }
+    }*/
+
+    var isConnected = function(url, onConnected) {
+            $.get(ctx + "/connected", function(userName) {
+                if (userName == "") {
+                    fromPage = url;
+                    window.location.hash = '/connect';
+                } else {
+                    if (!!onConnected) {
+                        onConnected(userName);
+                    }
+                }
+            });
+        }
 
     var gotoConnectPage = function(fromPage) {
         window.location = ctx + '/connect' + '?fromPage=' + escape('/main#/' + fromPage);
@@ -48,6 +69,17 @@ function init(ctx) {
         component.find('.container').children().not(':first').remove();
         component.show();
     }
+
+     var initConnect = function() {
+        $("#database").val("");
+        $("#username").val("");
+        $("#password").val("");
+        $('#error').hide();
+        $('#error').html("");
+        $("#loading").hide(300, function() {
+            $('#connecting-form').show();
+        });
+    };
 
     var initTables = function() {
         isConnected("tables", function() {
@@ -103,6 +135,27 @@ function init(ctx) {
         }
         loadPage(parts);
     }
+
+    $('#connect').click(function() {
+        var connection = {};
+        connection.database = $("#database").val();
+        connection.userName = $("#username").val();
+        connection.password = $("#password").val();
+
+        $.ajax({
+            url: ctx + "/connect",
+            data: connection,
+            type: 'PUT',
+            success: function(message) {
+                if (message == "" || message == null) {
+                    showFromPage();
+                } else {
+                    $('#error').html(message);
+                    $('#error').show();
+                }
+            }
+        });
+    });
 
     $(window).bind('hashchange', function(event) {
         load();

@@ -81,7 +81,7 @@ public abstract class ServiceImpl implements Service {
 //            result.add(new UserAction(action.getAction(), action.getConnection()));
 //            result.add(new UserAction(action.getAction(), new DatabaseConnection("Name", "db")));
             result.add(new UserAction(action.getAction(),
-                    new DatabaseConnection(action.getConnection().getUserName(), action.getConnection().getDbName())));
+                    new DatabaseConnection(action.getConnection().getUserName(), action.getConnection().getDatabase())));
         }
         return result;
 //        return userActions.findAll();

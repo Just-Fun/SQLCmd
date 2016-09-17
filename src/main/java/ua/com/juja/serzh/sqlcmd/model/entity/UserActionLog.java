@@ -1,7 +1,4 @@
-package ua.com.juja.serzh.sqlcmd.controller;
-
-
-import ua.com.juja.serzh.sqlcmd.model.entity.UserAction;
+package ua.com.juja.serzh.sqlcmd.model.entity;
 
 public class UserActionLog {
 

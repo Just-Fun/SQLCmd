@@ -1,4 +1,4 @@
-package ua.com.juja.serzh.sqlcmd.controller;
+package ua.com.juja.serzh.sqlcmd.model.entity;
 
 
 public class Connection {

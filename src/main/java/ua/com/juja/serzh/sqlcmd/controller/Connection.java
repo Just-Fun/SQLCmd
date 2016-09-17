@@ -6,14 +6,9 @@ public class Connection {
     private String userName;
     private String password;
     private String database;
-    private String fromPage;
 
     public Connection() {
         // do nothing
-    }
-
-    public Connection(String page) {
-        this.fromPage = page;
     }
 
     public String getUserName() {
@@ -38,13 +33,5 @@ public class Connection {
 
     public void setDatabase(String database) {
         this.database = database;
-    }
-
-    public String getFromPage() {
-        return fromPage;
-    }
-
-    public void setFromPage(String fromPage) {
-        this.fromPage = fromPage;
     }
 }

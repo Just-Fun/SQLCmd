@@ -14,11 +14,11 @@ public class UserActionLog {
         //do nothing
     }
 
-    public UserActionLog(UserAction userAction) {
-        this.username = userAction.getConnection().getUserName();
-        this.action = userAction.getAction();
-        this.database = userAction.getConnection().getDbName();
-        this.date = userAction.getDate();
+    public UserActionLog(UserAction action) {
+        this.username = action.getConnection().getUserName();
+        this.action = action.getAction();
+        this.database = action.getConnection().getDbName();
+        this.date = action.getDate();
     }
 
     public String getUsername() {

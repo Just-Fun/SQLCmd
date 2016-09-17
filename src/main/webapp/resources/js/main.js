@@ -35,18 +35,6 @@ function init(ctx) {
         }
     }
 
-   /* var isConnected = function(fromPage, onConnected) {
-        $.get(ctx + "/connected", function(isConnected) {
-            if (isConnected) {
-                if (!!onConnected) {
-                    onConnected();
-                }
-            } else {
-                gotoConnectPage(fromPage);
-            }
-        });
-    }*/
-
     var isConnected = function(url, onConnected) {
             $.get(ctx + "/connected", function(userName) {
                 if (userName == "") {

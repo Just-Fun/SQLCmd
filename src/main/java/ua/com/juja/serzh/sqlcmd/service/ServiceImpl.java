@@ -1,6 +1,8 @@
 package ua.com.juja.serzh.sqlcmd.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import ua.com.juja.serzh.sqlcmd.controller.UserActionLog;
 import ua.com.juja.serzh.sqlcmd.model.databaseManager.DatabaseManager;
@@ -70,7 +72,8 @@ public abstract class ServiceImpl implements Service {
     @Override
     public List<UserActionLog> getAll() {
         List<UserActionLog> result = new LinkedList<>();
-        for (UserAction action: userActions.findAll()) {
+        Pageable topTen = new PageRequest(0, 10);
+        for (UserAction action: userActions.findAll(topTen)) {
             result.add(new UserActionLog(action));
         }
         return result;

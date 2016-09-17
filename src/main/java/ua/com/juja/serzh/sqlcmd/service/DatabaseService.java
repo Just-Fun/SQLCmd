@@ -15,7 +15,7 @@ import java.util.*;
 
 @Component
 //@Transactional //?
-public abstract class ServiceImpl implements Service {
+public abstract class DatabaseService implements Service {
 
     protected abstract DatabaseManager getManager();
 
@@ -45,7 +45,7 @@ public abstract class ServiceImpl implements Service {
     }
 
     @Override
-    public List<List<String>> find(DatabaseManager manager, String tableName) {
+    public List<List<String>> getTableData(DatabaseManager manager, String tableName) {
         List<Map<String, Object>> tableData = manager.getTableData(tableName);
         Set<String> tableColumns = manager.getTableColumns(tableName);
         List<String> columns = new LinkedList<>(tableColumns);

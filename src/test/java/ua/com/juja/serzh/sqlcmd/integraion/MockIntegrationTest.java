@@ -67,8 +67,8 @@ public class MockIntegrationTest {
 
         // then
         assertLinks("[table1, table2]",
-                "[/sqlcmd/find?table=table1, " +
-                "/sqlcmd/find?table=table2]");
+                "[/sqlcmd/getTableData?table=table1, " +
+                "/sqlcmd/getTableData?table=table2]");
     }
 
     private void assertLinks(String expectedNames, String expectedUrls) {

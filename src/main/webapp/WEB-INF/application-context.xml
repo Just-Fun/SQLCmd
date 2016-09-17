@@ -42,8 +42,8 @@
         <property name="dataSource" ref="logDataSource" />
     </bean>
 
-    <bean id="service" class="ua.com.juja.serzh.sqlcmd.service.ServiceImpl">
-        <lookup-method name="getManager" bean="JDBCDatabaseManager"/>
+    <bean id="service" class="ua.com.juja.serzh.sqlcmd.service.DatabaseService">
+        <lookup-method name="getManager" bean="PostgreSQLManager"/>
     </bean>
 
     <bean id="logDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">

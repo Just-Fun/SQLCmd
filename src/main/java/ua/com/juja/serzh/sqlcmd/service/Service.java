@@ -15,7 +15,7 @@ public interface Service {
 
     DatabaseManager connect(String databaseName, String userName, String password);
 
-    List<List<String>> find(DatabaseManager manager, String tableName);
+    List<List<String>> getTableData(DatabaseManager manager, String tableName);
 
     Set<String> tables(DatabaseManager manager);
 

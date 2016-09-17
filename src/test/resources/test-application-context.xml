@@ -12,7 +12,7 @@
 
     <bean id="InMemoryDatabaseManager" class="ua.com.juja.serzh.sqlcmd.model.InMemoryDatabaseManager"/>
 
-    <bean id="service" class="ua.com.juja.serzh.sqlcmd.service.ServiceImpl">
+    <bean id="service" class="ua.com.juja.serzh.sqlcmd.service.DatabaseService">
         <lookup-method name="getManager" bean="InMemoryDatabaseManager"/>
     </bean>
 

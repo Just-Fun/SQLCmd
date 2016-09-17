@@ -10,9 +10,9 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.*;
 
-@Component/*("JDBCDatabaseManager")*/ //() ?
+@Component("PostgreSQLManager") //() ?
 //@Scope(value = "prototype") // ?
-public class JDBCDatabaseManager implements DatabaseManager {
+public class PostgreSQLManager implements DatabaseManager {
 
     static {
         try {

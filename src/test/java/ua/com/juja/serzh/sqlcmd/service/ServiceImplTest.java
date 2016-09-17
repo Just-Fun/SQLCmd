@@ -33,7 +33,7 @@ public class ServiceImplTest {
         manager.create("users", input2);
 
         // when
-        List<List<String>> users = service.find(manager, "users");
+        List<List<String>> users = service.getTableData(manager, "users");
 
         // then
         assertEquals("[[name, password, id], " +

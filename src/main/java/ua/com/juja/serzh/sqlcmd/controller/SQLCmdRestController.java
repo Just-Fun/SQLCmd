@@ -6,13 +6,12 @@ import ua.com.juja.serzh.sqlcmd.model.databaseManager.DatabaseManager;
 import ua.com.juja.serzh.sqlcmd.model.entity.Description;
 import ua.com.juja.serzh.sqlcmd.service.Service;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.*;
 
 @RestController
 // converter to Json objects :)
-public class RestService {
+public class SQLCmdRestController {
 
     @Autowired
     private Service service;
@@ -37,7 +36,7 @@ public class RestService {
     @RequestMapping(value = "/table/{table}/content", method = RequestMethod.GET)
     public List<List<String>> table(@PathVariable(value = "table") String table, HttpSession session) {
         DatabaseManager manager = getManager(session);
-        return service.find(manager, table);
+        return service.getTableData(manager, table);
     }
 
     @RequestMapping(value = "/connected", method = RequestMethod.GET)

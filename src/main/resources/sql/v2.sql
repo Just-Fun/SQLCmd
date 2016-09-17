@@ -74,3 +74,7 @@ WHERE user_actions.user_name=subquery.user_name AND user_actions.db_name=subquer
 
 ALTER TABLE user_actions DROP COLUMN user_name;
 ALTER TABLE user_actions DROP COLUMN db_name;
+
+-- add column
+
+ALTER TABLE public.user_actions ADD COLUMN date text;

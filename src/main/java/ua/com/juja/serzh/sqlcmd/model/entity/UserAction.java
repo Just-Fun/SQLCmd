@@ -15,7 +15,6 @@ public class UserAction {
     @Column(name = "action")
     private String action;
 
-//ALTER TABLE user_actions ADD COLUMN date text;
     @Column(name = "date")
     private String date;
 

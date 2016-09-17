@@ -1,5 +1,6 @@
 package ua.com.juja.serzh.sqlcmd.model.databaseManager;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
@@ -10,8 +11,8 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.*;
 
-@Component("PostgreSQLManager") //() ?
-//@Scope(value = "prototype") // ?
+@Component("PostgreSQLManager")
+@Scope(value = "prototype")
 public class PostgreSQLManager implements DatabaseManager {
 
     static {
@@ -28,6 +29,12 @@ public class PostgreSQLManager implements DatabaseManager {
     private static String host;
     private static String port;
 
+    private Connection connection;
+    private JdbcTemplate template;
+    private String database;
+    private String userName;
+    private String password;
+
     private static void loadProperties() {
         Properties property = new Properties();
         try (FileInputStream fis = new FileInputStream(PROPERTIES_FILE)) {
@@ -39,13 +46,6 @@ public class PostgreSQLManager implements DatabaseManager {
         }
     }
 
-    private Connection connection;
-    private JdbcTemplate template;
-    private String database;
-    private String userName;
-    private String password;
-
-
     @Override
     public void connect(String database, String userName, String password) {
         if (userName != null && password != null) {
@@ -53,7 +53,6 @@ public class PostgreSQLManager implements DatabaseManager {
             this.password = password;
         }
         this.database = database;
-
         closeOpenedConnection();
         getConnection();
     }
@@ -122,7 +121,6 @@ public class PostgreSQLManager implements DatabaseManager {
     public void clear(String tableName) {
         template.update(String.format("DELETE FROM public.%s", tableName));
     }*/
-
 
 
     @Override

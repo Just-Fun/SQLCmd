@@ -96,7 +96,13 @@ function init(ctx) {
 //                        $('#actions .container').find('.container').remove();
 //                        $('#actions .container').find('.container').contents().unwrap();
 //                        $('#actions .container script').empty();
-                        $('#actions script').tmpl(elements).appendTo('#actions .container');
+//                        $('#actions .container script').replaceWith("");
+//                        $('#actions .container').replaceWith("");
+//                        $('#actions .container').removeData();
+//                        $("").replaceAll('#actions .container');
+//                        $('#actions .container script').children().remove();
+
+                        $('#actions script').tmpl(elements).appendTo('#actions .container'); // !!!
                     });
                 });
             });

@@ -74,8 +74,8 @@ public abstract class DatabaseService implements Service {
     public List<UserActionLog> getAll() {
         List<UserActionLog> result = new LinkedList<>();
         Pageable topTen = new PageRequest(0, 10);
-        Page<UserAction> userActions = this.userActions.findAll(topTen);
-        for (UserAction action: userActions) {
+        Page<UserAction> actions = userActions.findAll(topTen);
+        for (UserAction action: actions) {
             result.add(new UserActionLog(action));
         }
         return result;

@@ -8,6 +8,7 @@
         <script type="text/javascript" src="${ctx}/resources/js/jquery.tmpl.js"></script>
         <script type="text/javascript" src="${ctx}/resources/js/main.js"></script>
         <script type="text/javascript">
+            <%-- $(function(){ == $(window).load(function(){--%>
             $(window).load(function(){
                 init('${ctx}');
             });

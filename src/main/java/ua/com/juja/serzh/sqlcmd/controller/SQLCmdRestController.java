@@ -53,7 +53,8 @@ public class SQLCmdRestController {
         return (manager != null) ? manager.getUserName() : null;
     }
 
-    @RequestMapping(value = "/connect", method = RequestMethod.PUT)
+//    @RequestMapping(value = "/connect", method = RequestMethod.PUT)
+    @RequestMapping(value = "/connect", method = RequestMethod.POST)
     public String connecting(HttpSession session, @ModelAttribute("connection") Connection connection) {
         try {
             DatabaseManager manager = service.connect(connection.getDatabase(),

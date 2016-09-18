@@ -167,7 +167,7 @@ function init(ctx) {
         $.ajax({
             url: ctx + "/connect",
             data: connection,
-            type: 'PUT',
+            type: 'POST',
             success: function(message) {
                 if (message == "" || message == null) {
                     showFromPage();

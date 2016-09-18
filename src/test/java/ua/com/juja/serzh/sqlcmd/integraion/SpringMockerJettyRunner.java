@@ -1,3 +1,4 @@
+/*
 package ua.com.juja.serzh.sqlcmd.integraion;
 
 import org.eclipse.jetty.webapp.WebAppContext;
@@ -10,11 +11,13 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+*/
 /**
  * User: oleksandr.baglai
  * Date: 11/18/12
  * Time: 5:07 PM
- */
+ *//*
+
 public class SpringMockerJettyRunner extends JettyRunner {
 
     private List<String> mocks = new LinkedList<String>();
@@ -76,3 +79,4 @@ public class SpringMockerJettyRunner extends JettyRunner {
     }
 
 }
+*/

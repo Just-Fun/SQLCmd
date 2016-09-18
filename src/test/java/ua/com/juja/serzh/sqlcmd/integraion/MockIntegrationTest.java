@@ -1,3 +1,4 @@
+/*
 package ua.com.juja.serzh.sqlcmd.integraion;
 
 import org.junit.After;
@@ -90,4 +91,4 @@ public class MockIntegrationTest {
     }
 
 
-}
+}*/

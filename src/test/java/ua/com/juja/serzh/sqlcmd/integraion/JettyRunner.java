@@ -1,3 +1,4 @@
+/*
 package ua.com.juja.serzh.sqlcmd.integraion;
 
 import org.eclipse.jetty.server.Server;
@@ -13,11 +14,13 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
+*/
 /**
  * User: oleksandr.baglai
  * Date: 11/18/12
  * Time: 4:47 PM
- */
+ *//*
+
 public class JettyRunner {
 
     private ServletContext servletContext;
@@ -133,3 +136,4 @@ public class JettyRunner {
         }
     }
 }
+*/

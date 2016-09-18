@@ -84,15 +84,13 @@ public class PostgreSQLManager implements DatabaseManager {
     @Override
     public List<Map<String, Object>> getTableData(String tableName) {
         return template.query("SELECT * FROM public." + tableName,
-                new RowMapper<Map<String, Object>>() {
-                    public Map<String, Object> mapRow(ResultSet rs, int rowNum) throws SQLException {
-                        ResultSetMetaData rsmd = rs.getMetaData();
-                        Map<String, Object> result = new LinkedHashMap<>();
-                        for (int i = 0; i < rsmd.getColumnCount(); i++) {
-                            result.put(rsmd.getColumnName(i + 1), rs.getObject(i + 1));
-                        }
-                        return result;
+                (rs, rowNum) -> {
+                    ResultSetMetaData rsmd = rs.getMetaData();
+                    Map<String, Object> result = new LinkedHashMap<>();
+                    for (int i = 0; i < rsmd.getColumnCount(); i++) {
+                        result.put(rsmd.getColumnName(i + 1), rs.getObject(i + 1));
                     }
+                    return result;
                 }
         );
     }
@@ -104,12 +102,16 @@ public class PostgreSQLManager implements DatabaseManager {
 
     @Override
     public Set<String> getTableNames() {
-        return new LinkedHashSet<>(template.query("SELECT table_name FROM information_schema.tables WHERE table_schema='public' AND table_type='BASE TABLE'",
-                new RowMapper<String>() {
-                    public String mapRow(ResultSet rs, int rowNum) throws SQLException {
-                        return rs.getString("table_name");
-                    }
-                }
+        return new LinkedHashSet<>(template.query("SELECT table_name FROM information_schema.tables " +
+                        "WHERE table_schema='public' AND table_type='BASE TABLE'",
+                (rs, rowNum) -> rs.getString("table_name")
+        ));
+    }
+
+    @Override
+    public Set<String> getDatabasesName() {
+        return new LinkedHashSet<>(template.query("SELECT datname FROM pg_database WHERE datistemplate = false;",
+                (rs, rowNum) -> rs.getString("datname")
         ));
     }
 
@@ -126,11 +128,7 @@ public class PostgreSQLManager implements DatabaseManager {
     @Override
     public Set<String> getTableColumns(String tableName) {
         return new LinkedHashSet<>(template.query("SELECT * FROM information_schema.columns WHERE table_schema = 'public' AND table_name = '" + tableName + "'",
-                new RowMapper<String>() {
-                    public String mapRow(ResultSet rs, int rowNum) throws SQLException {
-                        return rs.getString("column_name");
-                    }
-                }
+                (rs, rowNum) -> rs.getString("column_name")
         ));
     }
 

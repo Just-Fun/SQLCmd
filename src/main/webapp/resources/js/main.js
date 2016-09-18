@@ -87,6 +87,15 @@ function init(ctx) {
 
                 $.get(ctx + "/actions/content", function(elements) {
                     $("#loading").hide(300, function() {
+//                        $('#actions .container').children().not(':first').remove();
+//                        $('#actions').children().not(':first').remove();
+//                        $('#actions .container script').children().remove();
+//                        $('#actions .container').children().remove();
+//                        $('#actions .container').children().not(':first').remove();
+//                        $('#actions .container').html('');
+//                        $('#actions .container').find('.container').remove();
+//                        $('#actions .container').find('.container').contents().unwrap();
+//                        $('#actions .container script').empty();
                         $('#actions script').tmpl(elements).appendTo('#actions .container');
                     });
                 });

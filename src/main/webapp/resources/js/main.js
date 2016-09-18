@@ -9,6 +9,7 @@ function init(ctx) {
 
     var hideAllScreens = function() {
         $('#tables').hide();
+        $('#databases').hide();
         $('#menu').hide();
         $('#table').hide();
         $('#actions').hide();
@@ -22,6 +23,8 @@ function init(ctx) {
         var page = data[0];
         if (page == 'tables') {
             initTables();
+        } else if (page == 'databases') {
+            initDatabases(data[1]);
         } else if (page == 'table') {
             initTable(data[1]);
         } else if (page == 'menu') {
@@ -81,6 +84,18 @@ function init(ctx) {
         });
     };
 
+     var initDatabases = function() {
+        isConnected("databases", function() {
+            show('#databases');
+
+            $.get(ctx + "/databases/content", function(elements) {
+                $("#loading").hide(300, function() {
+                    $('#databases script').tmpl(elements).appendTo('#databases .container');
+                });
+            });
+        });
+    };
+
      var initActions = function() {
             isConnected("actions", function() {
                 show('#actions');
@@ -101,6 +116,10 @@ function init(ctx) {
 //                        $('#actions .container').removeData();
 //                        $("").replaceAll('#actions .container');
 //                        $('#actions .container script').children().remove();
+//                        $('#actions .container').children().detach();
+//                        $('#actions .container script').children().detach();
+//                        $('#actions .container script').detach();
+//                        $('#actions script').children().detach();
 
                         $('#actions script').tmpl(elements).appendTo('#actions .container'); // !!!
                     });

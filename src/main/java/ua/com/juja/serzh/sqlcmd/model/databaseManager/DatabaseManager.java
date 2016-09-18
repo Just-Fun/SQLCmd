@@ -12,6 +12,8 @@ public interface DatabaseManager {
 
     Set<String> getTableNames();
 
+    Set<String> getDatabasesName();
+
     void connect(String database, String userName, String password);
 
     void clear(String tableName);

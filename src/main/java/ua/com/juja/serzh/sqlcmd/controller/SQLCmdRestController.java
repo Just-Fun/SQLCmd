@@ -29,6 +29,12 @@ public class SQLCmdRestController {
         return service.tables(manager);
     }
 
+    @RequestMapping(value = "/databases/content", method = RequestMethod.GET)
+    public Set<String> databases(HttpSession session) {
+        DatabaseManager manager = getManager(session);
+        return service.databases(manager);
+    }
+
     @RequestMapping(value = "/actions/content", method = RequestMethod.GET)
     public List<UserActionLog> actions(HttpSession session) {
         DatabaseManager manager = getManager(session);

@@ -33,6 +33,8 @@ public abstract class DatabaseService implements Service {
                         "To connect to a database, which will work."),
                 new Description("tables",
                         "For a list of current database tables."),
+                new Description("databases",
+                        "For a list of current databases."),
                 new Description("actions",
                         "To view a user's activity."));
     }
@@ -68,6 +70,12 @@ public abstract class DatabaseService implements Service {
     public Set<String> tables(DatabaseManager manager) {
         userActions.createAction(manager.getUserName(), manager.getDatabaseName(), "TABLES");
         return manager.getTableNames();
+    }
+
+    @Override
+    public Set<String> databases(DatabaseManager manager) {
+        userActions.createAction(manager.getUserName(), manager.getDatabaseName(), "DATABASES");
+        return manager.getDatabasesName();
     }
 
     @Override

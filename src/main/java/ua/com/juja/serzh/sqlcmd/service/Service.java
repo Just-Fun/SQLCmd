@@ -23,5 +23,7 @@ public interface Service {
 
     List<UserAction> getAllFor(String userName);
 
+    Set<String> databases(DatabaseManager manager);
+
     List<UserActionLog> getAll();
 }

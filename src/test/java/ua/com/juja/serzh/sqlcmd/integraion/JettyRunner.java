@@ -104,6 +104,7 @@ public class JettyRunner {
         server.setHandler(context);
         server.start();
         port = server.getConnectors()[0].getLocalPort();
+//        port = ((ServerConnector)server.getConnectors()[0]).getLocalPort();
 
         return port;
     }

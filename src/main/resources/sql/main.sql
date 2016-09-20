@@ -1,3 +1,16 @@
+-- Database: sqlcmd_log
+
+-- DROP DATABASE sqlcmd_log;
+
+CREATE DATABASE sqlcmd_log
+  WITH OWNER = postgres
+       ENCODING = 'UTF8'
+       TABLESPACE = pg_default
+       LC_COLLATE = 'C'
+       LC_CTYPE = 'C'
+       CONNECTION LIMIT = -1;
+
+
 -- Table: public.user_actions
 
 -- DROP TABLE public.user_actions;

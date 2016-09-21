@@ -119,10 +119,11 @@ public class PostgreSQLManager implements DatabaseManager {
     public void clear(String tableName) {
         template.execute("DELETE FROM public." + tableName);
     }
-/*    @Override
+   /* @Override
     public void clear(String tableName) {
         template.update(String.format("DELETE FROM public.%s", tableName));
     }*/
+
 
 
     @Override
@@ -131,6 +132,28 @@ public class PostgreSQLManager implements DatabaseManager {
                 (rs, rowNum) -> rs.getString("column_name")
         ));
     }
+
+
+    @Override
+    public void createDatabase(String database) {
+        template.execute(String.format("CREATE DATABASE %s", database));
+    }
+
+    @Override
+    public void createTable(String query) {
+        template.execute(String.format("CREATE TABLE IF NOT EXISTS %s", query));
+    }
+
+    @Override
+    public void dropDatabase(String database) {
+        template.execute(String.format("DROP DATABASE IF EXISTS %s", database));
+    }
+
+    @Override
+    public void dropTable(String table) {
+        template.execute(String.format("DROP TABLE IF EXISTS %s", table));
+    }
+
 
     @Override
     public boolean isConnected() {

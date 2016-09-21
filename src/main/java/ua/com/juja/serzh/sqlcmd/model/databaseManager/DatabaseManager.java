@@ -20,6 +20,14 @@ public interface DatabaseManager {
 
     Set<String> getTableColumns(String tableName);
 
+    void createDatabase(String database);
+
+    void createTable(String query);
+
+    void dropDatabase(String database);
+
+    void dropTable(String table);
+
     boolean isConnected();
 
     String getDatabaseName();

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import ua.com.juja.serzh.sqlcmd.model.databaseManager.DatabaseManager;
+import ua.com.juja.serzh.sqlcmd.model.databaseManager.DatabaseManagerException;
 import ua.com.juja.serzh.sqlcmd.model.databaseManager.PostgreSQLManager;
 import ua.com.juja.serzh.sqlcmd.service.Service;
 
@@ -23,8 +24,8 @@ public class ServiceTest {
     DatabaseManager manager = new PostgreSQLManager();
 
 
-//    @Test(expected = ServiceException.class)
-    @Test(expected = NoSuchBeanDefinitionException.class)
+    @Test(expected = DatabaseManagerException.class)
+//    @Test(expected = NoSuchBeanDefinitionException.class)
     public void testConnect_WithIncorrectData() throws ServiceException {
         service.connect("qwe", "qwe", "qwe");
     }

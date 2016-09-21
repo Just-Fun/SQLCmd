@@ -43,7 +43,7 @@
     </bean>-->
 
     <bean id="service" class="ua.com.juja.serzh.sqlcmd.service.DatabaseService">
-        <lookup-method name="getManager" bean="postgreSQLManager"/>
+        <lookup-method name="getManager" bean="PostgreSQLManager"/>
     </bean>
 
 
@@ -55,47 +55,6 @@
     </bean>
 
     <context:property-placeholder location="classpath:log.jdbc.properties"/>
-
-   <!-- <context:annotation-config/>
-    <context:component-scan base-package="ua.com.juja.serzh.sqlcmd"/>
-    <jpa:repositories base-package="ua.com.juja.serzh.sqlcmd"
-                      entity-manager-factory-ref="emf"/>
-
-    <bean id="emf"
-          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="packagesToScan" value="ua.com.juja.serzh.sqlcmd" />
-        <property name="dataSource" ref="logDataSource" />
-
-        <property name="jpaProperties">
-            <props>
-                <prop key="hibernate.show_sql">true</prop>
-                <prop key="hibernate.hbm2ddl.auto">validate</prop>
-                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-            </props>
-        </property>
-
-        <property name="persistenceProvider">
-            <bean class="org.hibernate.jpa.HibernatePersistenceProvider"></bean>
-        </property>
-    </bean>
-    <tx:annotation-driven transaction-manager="transactionManager" />
-
-    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-        <property name="dataSource" ref="logDataSource" />
-    </bean>
-
-    <bean id="service" class="ua.com.juja.serzh.sqlcmd.service.DatabaseService">
-        <lookup-method name="getManager" bean="PostgreSQLManager"/>
-    </bean>
-
-    <bean id="logDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-        <property name="driverClassName" value="${log.jdbc.driverClassName}"/>
-        <property name="url" value="${log.jdbc.url}"/>
-        <property name="username" value="${log.jdbc.username}"/>
-        <property name="password" value="${log.jdbc.password}"/>
-    </bean>-->
-
-    <!--<context:property-placeholder location="classpath:log.jdbc.properties"/>-->
 
     <!--<bean id="service" class="ua.com.juja.serzh.sqlcmd.service.DatabaseService">
         <lookup-method name="getManager" bean="manager"/>

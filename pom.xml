@@ -149,12 +149,14 @@
             <version>3.3</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
+
+        <!--Loooong  log instead of log4j-slf4j-impl-->
+       <!-- <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>1.0.6</version>
             <scope>test</scope>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>

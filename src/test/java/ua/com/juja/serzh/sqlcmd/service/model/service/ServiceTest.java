@@ -12,6 +12,7 @@ import ua.com.juja.serzh.sqlcmd.model.databaseManager.DatabaseManagerException;
 import ua.com.juja.serzh.sqlcmd.model.databaseManager.PostgreSQLManager;
 import ua.com.juja.serzh.sqlcmd.service.Service;
 
+import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.mock;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -30,10 +31,14 @@ public class ServiceTest {
         service.connect("qwe", "qwe", "qwe");
     }
 
-    /*@Autowired
-    private Service service;
+    @Test
+    public void testConnect() throws ServiceException {
+//        manager = service.connect(login.getDatabase(), login.getUser(), login.getPassword());
+        service.connect("postgres", "postgres", "postgres");
+        assertNotNull(manager);
+    }
 
-    DatabaseManager manager = new PostgreSQLManager();
+    /*
 
     DatabaseManager mockManager = mock(DatabaseManager.class);
 
@@ -46,17 +51,6 @@ public class ServiceTest {
                       "tables, " +
                       "create-database, " +
                       "delete-database]", service.commandList().toString());
-    }
-
-    @Test
-    public void testConnect() throws ServiceException {
-        manager = service.connect(login.getDatabase(), login.getUser(), login.getPassword());
-        assertNotNull(manager);
-    }
-
-    @Test(expected = ServiceException.class)
-    public void testConnect_WithIncorrectData() throws ServiceException {
-        service.connect("qwe", "qwe", "qwe");
     }
 
     @Test

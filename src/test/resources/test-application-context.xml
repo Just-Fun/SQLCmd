@@ -56,7 +56,7 @@
 
     <context:property-placeholder location="classpath:log.jdbc.properties"/>
 
-    <!--<bean id="service" class="ua.com.juja.serzh.sqlcmd.service.DatabaseService">
+    <!--<bean id="service" class="DatabaseService">
         <lookup-method name="getManager" bean="manager"/>
     </bean>
 

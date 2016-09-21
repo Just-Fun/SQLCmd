@@ -1,16 +1,16 @@
-package ua.com.juja.serzh.sqlcmd.service.model.service;
+package ua.com.juja.serzh.sqlcmd.model.service;
 
 import org.hibernate.service.spi.ServiceException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import ua.com.juja.serzh.sqlcmd.service.Service;
 import ua.com.juja.serzh.sqlcmd.model.databaseManager.DatabaseManager;
 import ua.com.juja.serzh.sqlcmd.model.databaseManager.DatabaseManagerException;
 import ua.com.juja.serzh.sqlcmd.model.databaseManager.PostgreSQLManager;
-import ua.com.juja.serzh.sqlcmd.service.Service;
+import ua.com.juja.serzh.sqlcmd.DatabaseLogin;
 
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.mock;
@@ -23,7 +23,7 @@ public class ServiceTest {
     private Service service;
 
     DatabaseManager manager = new PostgreSQLManager();
-
+    DatabaseLogin login = new DatabaseLogin();
 
     @Test(expected = DatabaseManagerException.class)
 //    @Test(expected = NoSuchBeanDefinitionException.class)
@@ -33,16 +33,15 @@ public class ServiceTest {
 
     @Test
     public void testConnect() throws ServiceException {
-//        manager = service.connect(login.getDatabase(), login.getUser(), login.getPassword());
-        service.connect("postgres", "postgres", "postgres");
+        String database = login.getDatabase();
+        service.connect(database, login.getUser(), login.getPassword());
+//        service.connect("postgres", "postgres", "postgres");
         assertNotNull(manager);
     }
 
     /*
 
     DatabaseManager mockManager = mock(DatabaseManager.class);
-
-    DatabaseLogin login = new DatabaseLogin();
 
     @Test
     public void testCommandList() {

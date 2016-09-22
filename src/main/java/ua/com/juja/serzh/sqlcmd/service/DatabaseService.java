@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import ua.com.juja.serzh.sqlcmd.model.entity.UserActionLog;
 import ua.com.juja.serzh.sqlcmd.model.databaseManager.DatabaseManager;
 import ua.com.juja.serzh.sqlcmd.model.entity.Description;
@@ -15,7 +16,7 @@ import ua.com.juja.serzh.sqlcmd.model.repository.UserActionRepository;
 import java.util.*;
 
 @Component
-//@Transactional //?
+@Transactional //?
 public abstract class DatabaseService implements Service {
 
     protected abstract DatabaseManager getManager();

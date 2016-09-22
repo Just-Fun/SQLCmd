@@ -26,4 +26,5 @@ public interface Service {
     Set<String> databases(DatabaseManager manager);
 
     List<UserActionLog> getAll();
+
 }

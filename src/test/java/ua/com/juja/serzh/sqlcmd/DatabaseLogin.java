@@ -10,9 +10,8 @@ import java.util.Properties;
  * Created by POSITIV on 15.10.2015.
  */
 public class DatabaseLogin {
-    private final static String PROPERTIES_FILE = "src/test/resources/config.properties";
+    private final static String PROPERTIES_FILE = "src/test/resources/test-config.properties";
 
-    private static DatabaseManager manager;
     private static String database;
     private static String user;
     private static String password;

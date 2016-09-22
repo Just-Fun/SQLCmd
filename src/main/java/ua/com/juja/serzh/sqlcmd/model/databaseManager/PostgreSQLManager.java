@@ -109,7 +109,7 @@ public class PostgreSQLManager implements DatabaseManager {
     }
 
     @Override
-    public Set<String> getDatabasesName() {
+    public Set<String> getDatabases() {
         return new LinkedHashSet<>(template.query("SELECT datname FROM pg_database WHERE datistemplate = false;",
                 (rs, rowNum) -> rs.getString("datname")
         ));

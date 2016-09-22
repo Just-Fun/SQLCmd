@@ -12,7 +12,7 @@ public interface DatabaseManager {
 
     Set<String> getTableNames();
 
-    Set<String> getDatabasesName();
+    Set<String> getDatabases();
 
     void connect(String database, String userName, String password);
 

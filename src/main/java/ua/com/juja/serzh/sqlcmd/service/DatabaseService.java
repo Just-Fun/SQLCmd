@@ -76,7 +76,7 @@ public abstract class DatabaseService implements Service {
     @Override
     public Set<String> databases(DatabaseManager manager) {
         userActions.createAction(manager.getUserName(), manager.getDatabaseName(), "DATABASES");
-        return manager.getDatabasesName();
+        return manager.getDatabases();
     }
 
     @Override

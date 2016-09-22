@@ -199,6 +199,13 @@
             <version>2.6.2</version>
         </dependency>
 
+        <!--For BeforeMethod, will see...-->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.8</version>
+            <scope>test</scope>
+        </dependency>
 
 
     </dependencies>

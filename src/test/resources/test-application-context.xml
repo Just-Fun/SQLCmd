@@ -14,14 +14,15 @@
                            http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
     <context:annotation-config/>
-    <context:component-scan base-package="ua.com.juja.serzh.sqlcmd"/>
+    <context:component-scan base-package="ua.com.juja.serzh.sqlcmd.service"/>
+
     <jpa:repositories base-package="ua.com.juja.serzh.sqlcmd.model.repository"
                       entity-manager-factory-ref="emf"/>
 
     <bean id="emf"
           class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="packagesToScan" value="ua.com.juja.serzh.sqlcmd.model.entity" />
-        <property name="dataSource" ref="logDataSource" />
+        <property name="packagesToScan" value="ua.com.juja.serzh.sqlcmd.model.entity"/>
+        <property name="dataSource" ref="logDataSource"/>
 
         <property name="jpaProperties">
             <props>
@@ -36,14 +37,14 @@
         </property>
     </bean>
 
-    <tx:annotation-driven transaction-manager="transactionManager" />
+    <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-        <property name="dataSource" ref="logDataSource" />
+        <property name="dataSource" ref="logDataSource"/>
     </bean>
 
     <bean id="service" class="ua.com.juja.serzh.sqlcmd.service.DatabaseService">
-        <lookup-method name="getManager" bean="PostgreSQLManager"/>
+        <lookup-method name="getManager" bean="managerMock"/>
     </bean>
 
 
@@ -56,12 +57,12 @@
 
     <context:property-placeholder location="classpath:log.jdbc.properties"/>
 
-    <!--<bean id="service" class="DatabaseService">
-        <lookup-method name="getManager" bean="manager"/>
-    </bean>
+     <bean id="managerMock" class="org.mockito.Mockito" factory-method="mock">
+         <constructor-arg value="ua.com.juja.serzh.sqlcmd.model.databaseManager.DatabaseManager"/>
+     </bean>
 
-    <bean id="manager" class="org.mockito.Mockito" factory-method="mock">
-        <constructor-arg value="ua.com.juja.serzh.sqlcmd.model.databasemanager.DatabaseManager"/>
+   <!-- <bean id="manager" class="ua.com.juja.serzh.sqlcmd.model.service.MockitoFactoryBean">
+        <constructor-arg value="ua.com.juja.serzh.sqlcmd.model.databaseManager.DatabaseManager"/>
     </bean>-->
 
 </beans>

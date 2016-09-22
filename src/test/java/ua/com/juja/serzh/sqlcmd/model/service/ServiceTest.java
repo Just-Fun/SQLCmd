@@ -16,7 +16,8 @@ import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.mock;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = ("classpath:test-application-context.xml"))
+//@ContextConfiguration(locations = ("classpath:test-application-context.xml"))
+@ContextConfiguration(locations = ("file:src/main/webapp/WEB-INF/application-context.xml"))
 public class ServiceTest {
 
     @Autowired

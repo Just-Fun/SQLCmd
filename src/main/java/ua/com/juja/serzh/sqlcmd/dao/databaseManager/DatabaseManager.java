@@ -1,4 +1,4 @@
-package ua.com.juja.serzh.sqlcmd.model.databaseManager;
+package ua.com.juja.serzh.sqlcmd.dao.databaseManager;
 
 import java.util.List;
 import java.util.Map;

@@ -15,7 +15,7 @@
 
     <context:annotation-config/>
     <context:component-scan base-package="ua.com.juja.serzh.sqlcmd"/>
-    <jpa:repositories base-package="ua.com.juja.serzh.sqlcmd"
+    <jpa:repositories base-package="ua.com.juja.serzh.sqlcmd.dao.repository"
                       entity-manager-factory-ref="emf"/>
 
     <bean id="emf"

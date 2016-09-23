@@ -1,4 +1,4 @@
-package ua.com.juja.serzh.sqlcmd.model.entity;
+package ua.com.juja.serzh.sqlcmd.dao.entity;
 
 import javax.persistence.*;
 import java.util.List;

@@ -16,12 +16,12 @@
     <context:annotation-config/>
     <context:component-scan base-package="ua.com.juja.serzh.sqlcmd.service"/>
 
-    <jpa:repositories base-package="ua.com.juja.serzh.sqlcmd.model.repository"
+    <jpa:repositories base-package="ua.com.juja.serzh.sqlcmd.dao.repository"
                       entity-manager-factory-ref="emf"/>
 
     <bean id="emf"
           class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="packagesToScan" value="ua.com.juja.serzh.sqlcmd.model.entity"/>
+        <property name="packagesToScan" value="ua.com.juja.serzh.sqlcmd.dao.entity"/>
         <property name="dataSource" ref="logDataSource"/>
 
         <property name="jpaProperties">
@@ -45,7 +45,14 @@
 
     <bean id="service" class="ua.com.juja.serzh.sqlcmd.service.DatabaseService">
         <lookup-method name="getManager" bean="managerMock"/>
+        <!--<property name="UserActionRepository" ref="mockUserActions"/>-->
+        <!--<property name="userActions" ref="mockUserActions"/>-->
     </bean>
+
+   <!-- <bean id="mockUserActions" class="org.mockito.Mockito" factory-method="mock">
+        <constructor-arg value="ua.com.juja.serzh.sqlcmd.dao.repository.UserActionRepositoryCustom"/>
+        &lt;!&ndash;<constructor-arg value="ua.com.juja.serzh.sqlcmd.daoepository.UserActionRepositoryImpl"/>&ndash;&gt;
+    </bean>-->
 
 
     <bean id="logDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
@@ -58,11 +65,15 @@
     <context:property-placeholder location="classpath:log.jdbc.properties"/>
 
      <bean id="managerMock" class="org.mockito.Mockito" factory-method="mock">
-         <constructor-arg value="ua.com.juja.serzh.sqlcmd.model.databaseManager.DatabaseManager"/>
+         <constructor-arg value="ua.com.juja.serzh.sqlcmd.dao.databaseManager.DatabaseManager"/>
      </bean>
 
-   <!-- <bean id="manager" class="ua.com.juja.serzh.sqlcmd.model.service.MockitoFactoryBean">
-        <constructor-arg value="ua.com.juja.serzh.sqlcmd.model.databaseManager.DatabaseManager"/>
+    <!--<bean id="UserActionRepository" class="org.mockito.Mockito" factory-method="mock">
+        <constructor-arg value="ua.com.juja.serzh.sqlcmd.daoepository.UserActionRepositoryCustom"/>
+    </bean>-->
+
+   <!-- <bean id="manager" class="ua.com.juja.serzh.sqlcmd.daoervice.MockitoFactoryBean">
+        <constructor-arg value="ua.com.juja.serzh.sqlcmd.daoatabaseManager.DatabaseManager"/>
     </bean>-->
 
 </beans>

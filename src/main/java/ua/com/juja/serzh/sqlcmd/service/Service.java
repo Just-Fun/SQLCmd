@@ -1,10 +1,10 @@
 package ua.com.juja.serzh.sqlcmd.service;
 
-import ua.com.juja.serzh.sqlcmd.model.entity.UserActionLog;
-import ua.com.juja.serzh.sqlcmd.model.databaseManager.DatabaseManager;
-import ua.com.juja.serzh.sqlcmd.model.entity.DatabaseConnection;
-import ua.com.juja.serzh.sqlcmd.model.entity.Description;
-import ua.com.juja.serzh.sqlcmd.model.entity.UserAction;
+import ua.com.juja.serzh.sqlcmd.dao.entity.UserActionLog;
+import ua.com.juja.serzh.sqlcmd.dao.databaseManager.DatabaseManager;
+import ua.com.juja.serzh.sqlcmd.dao.entity.DatabaseConnection;
+import ua.com.juja.serzh.sqlcmd.dao.entity.Description;
+import ua.com.juja.serzh.sqlcmd.dao.entity.UserAction;
 
 import java.util.List;
 import java.util.Set;

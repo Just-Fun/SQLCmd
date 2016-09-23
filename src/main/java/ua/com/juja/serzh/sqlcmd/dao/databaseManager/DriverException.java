@@ -1,4 +1,4 @@
-package ua.com.juja.serzh.sqlcmd.model.databaseManager;
+package ua.com.juja.serzh.sqlcmd.dao.databaseManager;
 
 public class DriverException extends RuntimeException {
 

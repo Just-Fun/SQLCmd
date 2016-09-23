@@ -2,10 +2,10 @@ package ua.com.juja.serzh.sqlcmd.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import ua.com.juja.serzh.sqlcmd.model.databaseManager.DatabaseManager;
-import ua.com.juja.serzh.sqlcmd.model.entity.Connection;
-import ua.com.juja.serzh.sqlcmd.model.entity.Description;
-import ua.com.juja.serzh.sqlcmd.model.entity.UserActionLog;
+import ua.com.juja.serzh.sqlcmd.dao.databaseManager.DatabaseManager;
+import ua.com.juja.serzh.sqlcmd.dao.entity.Connection;
+import ua.com.juja.serzh.sqlcmd.dao.entity.Description;
+import ua.com.juja.serzh.sqlcmd.dao.entity.UserActionLog;
 import ua.com.juja.serzh.sqlcmd.service.Service;
 
 import javax.servlet.http.HttpSession;

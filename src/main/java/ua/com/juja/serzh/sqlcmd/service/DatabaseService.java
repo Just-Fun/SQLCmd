@@ -6,12 +6,12 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import ua.com.juja.serzh.sqlcmd.model.entity.UserActionLog;
-import ua.com.juja.serzh.sqlcmd.model.databaseManager.DatabaseManager;
-import ua.com.juja.serzh.sqlcmd.model.entity.Description;
-import ua.com.juja.serzh.sqlcmd.model.entity.UserAction;
-import ua.com.juja.serzh.sqlcmd.model.repository.DatabaseConnectionRepository;
-import ua.com.juja.serzh.sqlcmd.model.repository.UserActionRepository;
+import ua.com.juja.serzh.sqlcmd.dao.entity.UserActionLog;
+import ua.com.juja.serzh.sqlcmd.dao.databaseManager.DatabaseManager;
+import ua.com.juja.serzh.sqlcmd.dao.entity.Description;
+import ua.com.juja.serzh.sqlcmd.dao.entity.UserAction;
+import ua.com.juja.serzh.sqlcmd.dao.repository.DatabaseConnectionRepository;
+import ua.com.juja.serzh.sqlcmd.dao.repository.UserActionRepository;
 
 import java.util.*;
 

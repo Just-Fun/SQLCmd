@@ -1,4 +1,4 @@
-package ua.com.juja.serzh.sqlcmd.model.entity;
+package ua.com.juja.serzh.sqlcmd.dao.entity;
 
 public final class Description {
 

@@ -1,10 +1,10 @@
-package ua.com.juja.serzh.sqlcmd.model.repository;
+package ua.com.juja.serzh.sqlcmd.dao.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import ua.com.juja.serzh.sqlcmd.model.entity.DatabaseConnection;
-import ua.com.juja.serzh.sqlcmd.model.entity.UserAction;
+import ua.com.juja.serzh.sqlcmd.dao.entity.DatabaseConnection;
+import ua.com.juja.serzh.sqlcmd.dao.entity.UserAction;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -24,9 +24,6 @@ public class UserActionRepositoryImpl implements UserActionRepositoryCustom {
         if (databaseConnection == null) {
             databaseConnection = databaseConnections.save(new DatabaseConnection(userName, databaseName));
         }
-       /* UserAction userAction = new UserAction(action, databaseConnection);
-        Session session = (Session) entityManager.getDelegate();
-        session.persist(userAction);*/
         entityManager.persist(new UserAction(action, System.currentTimeMillis(), databaseConnection));
     }
 }

@@ -1,10 +1,10 @@
-package ua.com.juja.serzh.sqlcmd.model.repository;
+package ua.com.juja.serzh.sqlcmd.dao.repository;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
-import ua.com.juja.serzh.sqlcmd.model.entity.UserAction;
+import ua.com.juja.serzh.sqlcmd.dao.entity.UserAction;
 
 public interface UserActionRepository extends PagingAndSortingRepository<UserAction, Integer>, UserActionRepositoryCustom {
 

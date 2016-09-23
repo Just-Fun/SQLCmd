@@ -45,12 +45,12 @@
 
     <bean id="service" class="ua.com.juja.serzh.sqlcmd.service.DatabaseService">
         <lookup-method name="getManager" bean="managerMock"/>
-        <property name="UserActionRepository" ref="mockUserActions"/>
+        <!--<property name="UserActionRepository" ref="mockUserActions"/>-->
     </bean>
 
-    <bean id="mockUserActions" class="org.mockito.Mockito" factory-method="mock">
+    <!--<bean id="mockUserActions" class="org.mockito.Mockito" factory-method="mock">
         <constructor-arg value="ua.com.juja.serzh.sqlcmd.dao.repository.UserActionRepository"/>
-    </bean>
+    </bean>-->
 
 
     <bean id="logDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">

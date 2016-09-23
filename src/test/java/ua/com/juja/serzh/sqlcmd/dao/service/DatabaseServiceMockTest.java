@@ -28,13 +28,7 @@ public class DatabaseServiceMockTest {
     DatabaseManager manager;
 
     @Autowired
-//    @Mock
     private UserActionRepository userActions;
-
-   /* @BeforeMethod
-    public void initMocks() {
-        MockitoAnnotations.initMocks(this);
-    }*/
 
     @Test
     public void shouldAutowireDependencies() {

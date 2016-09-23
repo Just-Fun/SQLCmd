@@ -1,14 +1,9 @@
 package ua.com.juja.serzh.sqlcmd;
 
-import ua.com.juja.serzh.sqlcmd.model.databaseManager.DatabaseManager;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-/**
- * Created by POSITIV on 15.10.2015.
- */
 public class DatabaseLogin {
     private final static String PROPERTIES_FILE = "src/test/resources/test-config.properties";
 

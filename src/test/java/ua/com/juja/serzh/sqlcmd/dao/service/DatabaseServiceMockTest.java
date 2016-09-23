@@ -1,17 +1,19 @@
-package ua.com.juja.serzh.sqlcmd.model.service;
+package ua.com.juja.serzh.sqlcmd.dao.service;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import ua.com.juja.serzh.sqlcmd.model.databaseManager.DatabaseManager;
+import ua.com.juja.serzh.sqlcmd.dao.databaseManager.DatabaseManager;
+import ua.com.juja.serzh.sqlcmd.dao.repository.UserActionRepository;
 import ua.com.juja.serzh.sqlcmd.service.Service;
 
 import java.util.*;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -25,13 +27,20 @@ public class DatabaseServiceMockTest {
     @Autowired
     DatabaseManager manager;
 
-    /*@Autowired
-    private UserActionRepository userActions;
-*/
+    @Autowired
+//    @Mock
+//    private UserActionRepository userActions;
+
+   /* @BeforeMethod
+    public void initMocks() {
+        MockitoAnnotations.initMocks(this);
+    }*/
+
     @Test
     public void shouldAutowireDependencies() {
         assertNotNull(manager);
         assertNotNull(service);
+//        assertNotNull(userActions);
     }
 
     @Test
@@ -40,27 +49,24 @@ public class DatabaseServiceMockTest {
         String database = "databaseName";
         String username = "username";
         String password = "password";
-
         //when
         service.connect(database, username, password);
-
         //then
         verify(manager).connect(database, username, password);
-        //userActions.createAction( TODO ..
     }
 
     @Test
     public void databasesTest() throws Exception {
         service.databases(manager);
-        verify(manager).getDatabasesName();
-
+        verify(manager).getDatabases();
+        // TODO
+//        verify(userActions).createAction(manager.getUserName(), manager.getDatabaseName(), "DATABASES");
     }
 
     @Test
     public void tablesTest() throws Exception {
         service.tables(manager);
         verify(manager).getTableNames();
-
     }
 
     @Test
@@ -118,32 +124,7 @@ public class DatabaseServiceMockTest {
     }
 
     @Test
-    public void getTableData() throws Exception {
-
-    }
-
-    @Test
     public void getAll() throws Exception {
 
     }
-
-
-/*    @Test
-    public void testCreateEntry() {
-        //given
-        String table = "test";
-        String[] values = {"John", "Smith"};
-        when(manager.getTableColumns(table))
-                .thenReturn(new LinkedHashSet<String>(Arrays.asList("username", "password")));
-
-        Map<String, Object> expected = new LinkedHashMap<>();
-        expected.put("username", "John");
-        expected.put("password", "Smith");
-
-      *//*  //when
-        service.createEntry(manager, table, values);
-
-        //then
-        verify(manager).insert(table, expected);*//*
-    }*/
 }

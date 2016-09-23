@@ -1,4 +1,4 @@
-package ua.com.juja.serzh.sqlcmd.model.service;
+package ua.com.juja.serzh.sqlcmd.dao.service;
 
 import org.mockito.Mockito;
 import org.springframework.beans.factory.FactoryBean;

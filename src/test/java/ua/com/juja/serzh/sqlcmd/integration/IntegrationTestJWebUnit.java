@@ -8,7 +8,7 @@ import ua.com.juja.serzh.sqlcmd.dao.databaseManager.PostgreSQLManager;
 import static net.sourceforge.jwebunit.junit.JWebUnit.*;
 
 @Ignore
-public class IntegrationTest {
+public class IntegrationTestJWebUnit {
     private static DatabaseManager manager;
 
     private static Setup setup = new Setup();

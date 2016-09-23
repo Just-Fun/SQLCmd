@@ -33,4 +33,9 @@ public interface DatabaseManager {
     String getDatabaseName();
 
     String getUserName();
+
+    void insert(String tableName, Map<String, Object> input);
+
+    void update(String tableName, String keyName, String keyValue,
+                Map<String, Object> columnData);
 }

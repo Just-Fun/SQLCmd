@@ -4,16 +4,17 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.springframework.jdbc.BadSqlGrammarException;
 import ua.com.juja.serzh.sqlcmd.Setup;
 import ua.com.juja.serzh.sqlcmd.dao.databaseManager.DatabaseManager;
+import ua.com.juja.serzh.sqlcmd.dao.databaseManager.DatabaseManagerException;
 import ua.com.juja.serzh.sqlcmd.dao.databaseManager.PostgreSQLManager;
 
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.*;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 /**
  * Created by serzh on 5/11/16.
@@ -21,21 +22,17 @@ import static org.junit.Assert.assertTrue;
 @Ignore
 public class DatabaseManagerTest {
 
-    private static Setup setup;
     private static DatabaseManager manager;
-    private static String database;
-    private static String user;
-    private static String password;
+
+    private static Setup setup = new Setup();
+    private final static String DATABASE = "sqlcmd5hope5never5exist";
+    private final static String USER = setup.getUser();;
+    private final static String PASSWORD = setup.getPassword();
 
     @BeforeClass
     public static void setup() {
-        setup = new Setup();
-        database = "sqlcmd5hope5never5exist";
-        user = setup.getUser();
-        password = setup.getPassword();
-
         manager = new PostgreSQLManager();
-        setup.setupData(manager, database);
+        setup.setupData(manager, DATABASE);
     }
 
     @AfterClass
@@ -147,12 +144,59 @@ public class DatabaseManagerTest {
         manager.clear("users");
         // then
         List<Map<String, Object>> users = manager.getTableData("users");
+        List<Map<String, Object>> expected = new ArrayList<>();
         assertEquals(0, users.size());
+        assertEquals(expected, users);
+    }
+
+    @Test(expected = BadSqlGrammarException.class)
+    public void testClearNotExistTable() {
+        //when
+        manager.clear("notExistTable");
     }
 
     @Test
     public void testIsConnected() {
         assertTrue(manager.isConnected());
+    }
+
+    @Test(expected = DatabaseManagerException.class)
+    public void testConnectToNotExistDatabase() {
+        //when
+        try {
+            manager.connect("notExistBase", null, null);
+            fail();
+        } catch (Exception e) {
+            //then
+            manager.connect(DATABASE, null, null);
+            throw e;
+        }
+    }
+
+    @Test(expected = DatabaseManagerException.class)
+    public void testConnectToDatabaseWhenIncorrectUserAndPassword() {
+        //when
+        try {
+            manager.connect(DATABASE, "notExistUser", "qwertyuiop");
+            fail();
+        } catch (Exception e) {
+            //then
+            manager.connect(DATABASE, USER, PASSWORD);
+            throw e;
+        }
+    }
+
+    @Test(expected = DatabaseManagerException.class)
+    public void testConnectToServerWhenIncorrectUserAndPassword() {
+        //when
+        try {
+            manager.connect(null, "notExistUser", "qwertyuiop");
+            fail();
+        } catch (Exception e) {
+            //then
+            manager.connect(DATABASE, USER, PASSWORD);
+            throw e;
+        }
     }
 
     @Test

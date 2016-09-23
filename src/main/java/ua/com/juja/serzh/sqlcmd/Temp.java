@@ -10,11 +10,16 @@ import java.util.Set;
 public class Temp {
 
     public static void main(String[] args) {
-        PostgreSQLManager manager = new PostgreSQLManager();
+       int i = 256;
+        System.out.println(Integer.toBinaryString(i));
+    }
+}
+
+
+
+/* PostgreSQLManager manager = new PostgreSQLManager();
         manager.connect("", "postgres", "postgres");
         manager.dropDatabase("new1");
         manager.dropDatabase("new2");
         Set<String> databases = manager.getDatabases();
-        databases.forEach(System.out::println);
-    }
-}
+        databases.forEach(System.out::println);*/

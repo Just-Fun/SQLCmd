@@ -51,6 +51,7 @@ public class Setup {
             throw new RuntimeException("For testing, change the name and password in a file 'test-config.properties'."
                     + "\n" + e.getCause());
         }
+        manager.dropDatabase(database);
         manager.createDatabase(database);
         manager.connect(database, user, password);
         createTablesWithData(manager);

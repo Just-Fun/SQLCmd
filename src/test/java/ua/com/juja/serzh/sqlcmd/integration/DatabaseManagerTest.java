@@ -17,7 +17,6 @@ import static org.junit.Assert.*;
 /**
  * Created by serzh on 5/11/16.
  */
-@Ignore
 public class DatabaseManagerTest {
 
     private static DatabaseManager manager;

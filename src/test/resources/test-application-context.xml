@@ -45,14 +45,12 @@
 
     <bean id="service" class="ua.com.juja.serzh.sqlcmd.service.DatabaseService">
         <lookup-method name="getManager" bean="managerMock"/>
-        <!--<property name="UserActionRepository" ref="mockUserActions"/>-->
-        <!--<property name="userActions" ref="mockUserActions"/>-->
+        <property name="UserActionRepository" ref="mockUserActions"/>
     </bean>
 
-   <!-- <bean id="mockUserActions" class="org.mockito.Mockito" factory-method="mock">
-        <constructor-arg value="ua.com.juja.serzh.sqlcmd.dao.repository.UserActionRepositoryCustom"/>
-        &lt;!&ndash;<constructor-arg value="ua.com.juja.serzh.sqlcmd.daoepository.UserActionRepositoryImpl"/>&ndash;&gt;
-    </bean>-->
+    <bean id="mockUserActions" class="org.mockito.Mockito" factory-method="mock">
+        <constructor-arg value="ua.com.juja.serzh.sqlcmd.dao.repository.UserActionRepository"/>
+    </bean>
 
 
     <bean id="logDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
@@ -68,8 +66,8 @@
          <constructor-arg value="ua.com.juja.serzh.sqlcmd.dao.databaseManager.DatabaseManager"/>
      </bean>
 
-    <!--<bean id="UserActionRepository" class="org.mockito.Mockito" factory-method="mock">
-        <constructor-arg value="ua.com.juja.serzh.sqlcmd.daoepository.UserActionRepositoryCustom"/>
+ <!--   <bean id="UserActionRepository" class="org.mockito.Mockito" factory-method="mock">
+        <constructor-arg value="ua.com.juja.serzh.sqlcmd.dao.repository.UserActionRepository"/>
     </bean>-->
 
    <!-- <bean id="manager" class="ua.com.juja.serzh.sqlcmd.daoervice.MockitoFactoryBean">

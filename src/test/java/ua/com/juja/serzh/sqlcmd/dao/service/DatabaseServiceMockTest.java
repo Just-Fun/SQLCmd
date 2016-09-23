@@ -29,7 +29,7 @@ public class DatabaseServiceMockTest {
 
     @Autowired
 //    @Mock
-//    private UserActionRepository userActions;
+    private UserActionRepository userActions;
 
    /* @BeforeMethod
     public void initMocks() {

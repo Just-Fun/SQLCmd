@@ -10,7 +10,7 @@ import ua.com.juja.serzh.sqlcmd.service.Service;
 import ua.com.juja.serzh.sqlcmd.dao.databaseManager.DatabaseManager;
 import ua.com.juja.serzh.sqlcmd.dao.databaseManager.DatabaseManagerException;
 import ua.com.juja.serzh.sqlcmd.dao.databaseManager.PostgreSQLManager;
-import ua.com.juja.serzh.sqlcmd.DatabaseLogin;
+import ua.com.juja.serzh.sqlcmd.Setup;
 
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.mock;
@@ -24,7 +24,7 @@ public class ServiceTest {
     private Service service;
 
     DatabaseManager manager = new PostgreSQLManager();
-    DatabaseLogin login = new DatabaseLogin();
+    Setup login = new Setup();
 
     @Test(expected = DatabaseManagerException.class)
     public void testConnect_WithIncorrectData() throws ServiceException {

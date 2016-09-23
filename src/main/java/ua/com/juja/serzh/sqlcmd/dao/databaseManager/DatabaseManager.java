@@ -38,4 +38,6 @@ public interface DatabaseManager {
                 Map<String, Object> columnData);
 
     int getTableSize(String tableName);
+
+    void clearDatabase(String tableName);
 }

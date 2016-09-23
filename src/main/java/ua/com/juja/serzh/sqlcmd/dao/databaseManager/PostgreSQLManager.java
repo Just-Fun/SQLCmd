@@ -190,4 +190,9 @@ public class PostgreSQLManager implements DatabaseManager {
                     pair.getValue(), keyName, keyValue));
         }
     }
+
+    @Override
+    public void clearDatabase(String tableName) {
+        getTableNames().forEach(this::dropTable);
+    }
 }

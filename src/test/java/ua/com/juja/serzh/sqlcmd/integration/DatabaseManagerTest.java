@@ -1,4 +1,4 @@
-package ua.com.juja.serzh.sqlcmd.dao;
+package ua.com.juja.serzh.sqlcmd.integration;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;

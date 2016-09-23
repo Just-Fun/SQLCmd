@@ -8,8 +8,6 @@ public interface DatabaseManager {
 
     List<Map<String, Object>> getTableData(String tableName);
 
-    int getSize(String tableName);
-
     Set<String> getTableNames();
 
     Set<String> getDatabases();
@@ -38,4 +36,6 @@ public interface DatabaseManager {
 
     void update(String tableName, String keyName, String keyValue,
                 Map<String, Object> columnData);
+
+    int getTableSize(String tableName);
 }

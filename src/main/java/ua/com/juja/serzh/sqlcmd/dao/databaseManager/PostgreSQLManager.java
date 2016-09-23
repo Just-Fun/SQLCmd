@@ -96,7 +96,7 @@ public class PostgreSQLManager implements DatabaseManager {
     }
 
     @Override
-    public int getSize(String tableName) {
+    public int getTableSize(String tableName) {
         return template.queryForObject("SELECT COUNT(*) FROM public." + tableName, Integer.class);
     }
 

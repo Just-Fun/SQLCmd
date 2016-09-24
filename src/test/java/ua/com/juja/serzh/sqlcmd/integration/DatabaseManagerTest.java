@@ -2,7 +2,6 @@ package ua.com.juja.serzh.sqlcmd.integration;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.jdbc.BadSqlGrammarException;
 import ua.com.juja.serzh.sqlcmd.Setup;

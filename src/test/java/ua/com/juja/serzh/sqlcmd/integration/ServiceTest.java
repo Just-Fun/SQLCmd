@@ -1,4 +1,4 @@
-package ua.com.juja.serzh.sqlcmd.dao.service;
+package ua.com.juja.serzh.sqlcmd.integration;
 
 import org.hibernate.service.spi.ServiceException;
 import org.junit.Test;
@@ -16,7 +16,6 @@ import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.mock;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-//@ContextConfiguration(locations = ("classpath:test-application-context.xml"))
 @ContextConfiguration(locations = ("file:src/main/webapp/WEB-INF/application-context.xml"))
 public class ServiceTest {
 
@@ -36,4 +35,6 @@ public class ServiceTest {
         service.connect(login.getDatabase(), login.getUser(), login.getPassword());
         assertNotNull(manager);
     }
+
+
 }

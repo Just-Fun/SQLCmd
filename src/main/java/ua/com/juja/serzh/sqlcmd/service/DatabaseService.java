@@ -10,7 +10,6 @@ import ua.com.juja.serzh.sqlcmd.dao.entity.UserActionLog;
 import ua.com.juja.serzh.sqlcmd.dao.databaseManager.DatabaseManager;
 import ua.com.juja.serzh.sqlcmd.dao.entity.Description;
 import ua.com.juja.serzh.sqlcmd.dao.entity.UserAction;
-import ua.com.juja.serzh.sqlcmd.dao.repository.DatabaseConnectionRepository;
 import ua.com.juja.serzh.sqlcmd.dao.repository.UserActionRepository;
 
 import java.util.*;
@@ -21,14 +20,6 @@ public abstract class DatabaseService implements Service {
 
 
     protected abstract DatabaseManager getManager();
-
- /*   public UserActionRepository getUserActions() {
-        return userActions;
-    }
-
-    public void setUserActions(UserActionRepository userActions) {
-        this.userActions = userActions;
-    }*/
 
     @Autowired
     private UserActionRepository userActions;

@@ -3,6 +3,8 @@ package ua.com.juja.serzh.sqlcmd.dao.service;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import ua.com.juja.serzh.sqlcmd.dao.databaseManager.DatabaseManager;
@@ -46,6 +48,7 @@ public class DatabaseServiceMockTest {
         service.connect(database, username, password);
         //then
         verify(manager).connect(database, username, password);
+        verify(userActions).createAction(username, database, "CONNECT");
     }
 
     @Test
@@ -59,6 +62,17 @@ public class DatabaseServiceMockTest {
     public void tablesTest() throws Exception {
         service.tables(manager);
         verify(manager).getTableNames();
+        verify(userActions).createAction(manager.getUserName(), manager.getDatabaseName(), "TABLES");
+
+    }
+
+    @Test
+    public void testGetTableDataSimple() {
+        String tableName = "someTableName";
+        service.getTableData(manager, tableName);
+        verify(manager).getTableData(tableName);
+        verify(manager).getTableColumns(tableName);
+        verify(userActions).createAction(manager.getUserName(), manager.getDatabaseName(), "FIND(" + tableName +  ")");
     }
 
     @Test
@@ -116,7 +130,9 @@ public class DatabaseServiceMockTest {
     }
 
     @Test
-    public void getAll() throws Exception {
-
+    public void testGetAll() {
+       /* service.getAll();
+        Pageable topTen = new PageRequest(0, 10);
+        verify(userActions.findAll(topTen));*/
     }
 }

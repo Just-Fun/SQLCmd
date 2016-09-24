@@ -13,7 +13,29 @@
                            http://www.springframework.org/schema/data/jpa
                            http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
+
     <context:annotation-config/>
+    <context:component-scan base-package="ua.com.juja.serzh.sqlcmd"/>
+
+    <bean id="service" class="ua.com.juja.serzh.sqlcmd.service.DatabaseService">
+        <lookup-method name="getManager" bean="manager"/>
+        <lookup-method name="getUserActions" bean="mockUserActions"/>
+    </bean>
+
+    <bean id="mockUserActions" class="org.mockito.Mockito" factory-method="mock">
+        <constructor-arg value="ua.com.juja.serzh.sqlcmd.dao.repository.UserActionRepository"/>
+    </bean>
+
+
+    <bean id="manager" class="org.mockito.Mockito" factory-method="mock">
+        <constructor-arg value="ua.com.juja.serzh.sqlcmd.dao.databaseManager.DatabaseManager"/>
+    </bean>
+
+   <!-- <bean id="mockDatabaseConnectionRepository" class="org.mockito.Mockito" factory-method="mock">
+        <constructor-arg value="ua.com.juja.serzh.sqlcmd.dao.repository.DatabaseConnectionRepository"/>
+    </bean>-->
+
+    <!--<context:annotation-config/>
     <context:component-scan base-package="ua.com.juja.serzh.sqlcmd.service"/>
 
     <jpa:repositories base-package="ua.com.juja.serzh.sqlcmd.dao.repository"
@@ -45,12 +67,12 @@
 
     <bean id="service" class="ua.com.juja.serzh.sqlcmd.service.DatabaseService">
         <lookup-method name="getManager" bean="managerMock"/>
-        <!--<property name="UserActionRepository" ref="mockUserActions"/>-->
+        &lt;!&ndash;<property name="UserActionRepository" ref="mockUserActions"/>&ndash;&gt;
     </bean>
 
-    <!--<bean id="mockUserActions" class="org.mockito.Mockito" factory-method="mock">
+    &lt;!&ndash;<bean id="mockUserActions" class="org.mockito.Mockito" factory-method="mock">
         <constructor-arg value="ua.com.juja.serzh.sqlcmd.dao.repository.UserActionRepository"/>
-    </bean>-->
+    </bean>&ndash;&gt;
 
 
     <bean id="logDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
@@ -66,12 +88,12 @@
          <constructor-arg value="ua.com.juja.serzh.sqlcmd.dao.databaseManager.DatabaseManager"/>
      </bean>
 
- <!--   <bean id="UserActionRepository" class="org.mockito.Mockito" factory-method="mock">
+ &lt;!&ndash;   <bean id="UserActionRepository" class="org.mockito.Mockito" factory-method="mock">
         <constructor-arg value="ua.com.juja.serzh.sqlcmd.dao.repository.UserActionRepository"/>
-    </bean>-->
+    </bean>&ndash;&gt;
 
-   <!-- <bean id="manager" class="ua.com.juja.serzh.sqlcmd.daoervice.MockitoFactoryBean">
+   &lt;!&ndash; <bean id="manager" class="ua.com.juja.serzh.sqlcmd.daoervice.MockitoFactoryBean">
         <constructor-arg value="ua.com.juja.serzh.sqlcmd.daoatabaseManager.DatabaseManager"/>
-    </bean>-->
+    </bean>&ndash;&gt;-->
 
 </beans>

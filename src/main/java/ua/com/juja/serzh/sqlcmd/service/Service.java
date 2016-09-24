@@ -5,6 +5,7 @@ import ua.com.juja.serzh.sqlcmd.dao.databaseManager.DatabaseManager;
 import ua.com.juja.serzh.sqlcmd.dao.entity.DatabaseConnection;
 import ua.com.juja.serzh.sqlcmd.dao.entity.Description;
 import ua.com.juja.serzh.sqlcmd.dao.entity.UserAction;
+import ua.com.juja.serzh.sqlcmd.dao.repository.UserActionRepository;
 
 import java.util.List;
 import java.util.Set;
@@ -27,4 +28,5 @@ public interface Service {
 
     List<UserActionLog> getAll();
 
+    UserActionRepository getUserActions();
 }

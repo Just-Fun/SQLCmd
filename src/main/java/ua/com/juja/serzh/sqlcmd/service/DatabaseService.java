@@ -19,13 +19,19 @@ import java.util.*;
 @Transactional //?
 public abstract class DatabaseService implements Service {
 
+
     protected abstract DatabaseManager getManager();
+
+ /*   public UserActionRepository getUserActions() {
+        return userActions;
+    }
+
+    public void setUserActions(UserActionRepository userActions) {
+        this.userActions = userActions;
+    }*/
 
     @Autowired
     private UserActionRepository userActions;
-
-    @Autowired
-    private DatabaseConnectionRepository databaseConnections;
 
     @Override
     public List<Description> commandsDescription() {

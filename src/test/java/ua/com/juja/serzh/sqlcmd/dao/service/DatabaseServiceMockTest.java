@@ -1,12 +1,15 @@
 package ua.com.juja.serzh.sqlcmd.dao.service;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import ua.com.juja.serzh.sqlcmd.dao.databaseManager.DatabaseManager;
+import ua.com.juja.serzh.sqlcmd.dao.repository.DatabaseConnectionRepository;
 import ua.com.juja.serzh.sqlcmd.dao.repository.UserActionRepository;
+import ua.com.juja.serzh.sqlcmd.service.DatabaseService;
 import ua.com.juja.serzh.sqlcmd.service.Service;
 
 import java.util.*;
@@ -31,10 +34,10 @@ public class DatabaseServiceMockTest {
     private UserActionRepository userActions;
 
     @Test
-    public void shouldAutowireDependencies() {
+    public void shouldAutowiredDependencies() {
         assertNotNull(manager);
         assertNotNull(service);
-//        assertNotNull(userActions);
+        assertNotNull(userActions);
     }
 
     @Test
@@ -53,8 +56,7 @@ public class DatabaseServiceMockTest {
     public void databasesTest() throws Exception {
         service.databases(manager);
         verify(manager).getDatabases();
-        // TODO
-//        verify(userActions).createAction(manager.getUserName(), manager.getDatabaseName(), "DATABASES");
+        verify(userActions).createAction(manager.getUserName(), manager.getDatabaseName(), "DATABASES");
     }
 
     @Test

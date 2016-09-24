@@ -3,11 +3,15 @@ package ua.com.juja.serzh.sqlcmd.dao.service;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import ua.com.juja.serzh.sqlcmd.dao.databaseManager.DatabaseManager;
+import ua.com.juja.serzh.sqlcmd.dao.entity.DatabaseConnection;
+import ua.com.juja.serzh.sqlcmd.dao.entity.UserAction;
 import ua.com.juja.serzh.sqlcmd.dao.repository.UserActionRepository;
 import ua.com.juja.serzh.sqlcmd.service.Service;
 
@@ -23,10 +27,10 @@ import static org.mockito.Mockito.when;
 public class DatabaseServiceMockTest {
 
     @Autowired
-    Service service;
+    private Service service;
 
     @Autowired
-    DatabaseManager manager;
+    private DatabaseManager manager;
 
     @Autowired
     private UserActionRepository userActions;
@@ -72,7 +76,7 @@ public class DatabaseServiceMockTest {
         service.getTableData(manager, tableName);
         verify(manager).getTableData(tableName);
         verify(manager).getTableColumns(tableName);
-        verify(userActions).createAction(manager.getUserName(), manager.getDatabaseName(), "FIND(" + tableName +  ")");
+        verify(userActions).createAction(manager.getUserName(), manager.getDatabaseName(), "FIND(" + tableName + ")");
     }
 
     @Test
@@ -131,8 +135,14 @@ public class DatabaseServiceMockTest {
 
     @Test
     public void testGetAll() {
-       /* service.getAll();
+        List<UserAction> actionList = new LinkedList<>();
+        actionList.add(new UserAction("SomeAction", 123, new DatabaseConnection("userName", "databaseName")));
+        actionList.add(new UserAction("SomeAction2", 124, new DatabaseConnection("userName2", "databaseName2")));
+
         Pageable topTen = new PageRequest(0, 10);
-        verify(userActions.findAll(topTen));*/
+        Page<UserAction> actions = new PageImpl<>(actionList, topTen, 2);
+        when(userActions.findAll(topTen)).thenReturn(actions);
+        service.getAll();
+        verify(userActions).findAll(topTen);
     }
 }

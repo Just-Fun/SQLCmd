@@ -1,6 +1,7 @@
 package ua.com.juja.serzh.sqlcmd.integration;
 
 import org.hibernate.service.spi.ServiceException;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,6 @@ import ua.com.juja.serzh.sqlcmd.dao.databaseManager.PostgreSQLManager;
 import ua.com.juja.serzh.sqlcmd.Setup;
 
 import static org.junit.Assert.assertNotNull;
-import static org.mockito.Mockito.mock;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = ("file:src/main/webapp/WEB-INF/application-context.xml"))
@@ -21,9 +21,14 @@ public class ServiceTest {
 
     @Autowired
     private Service service;
+    private DatabaseManager manager;
+    private Setup login;
 
-    DatabaseManager manager = new PostgreSQLManager();
-    Setup login = new Setup();
+    @BeforeClass
+    public void setup() {
+        manager = new PostgreSQLManager();
+        login = new Setup();
+    }
 
     @Test(expected = DatabaseManagerException.class)
     public void testConnect_WithIncorrectData() throws ServiceException {
@@ -35,6 +40,4 @@ public class ServiceTest {
         service.connect(login.getDatabase(), login.getUser(), login.getPassword());
         assertNotNull(manager);
     }
-
-
 }

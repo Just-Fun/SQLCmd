@@ -1,22 +1,18 @@
 package ua.com.juja.serzh.sqlcmd.dao.service;
 
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import ua.com.juja.serzh.sqlcmd.dao.databaseManager.DatabaseManager;
-import ua.com.juja.serzh.sqlcmd.dao.repository.DatabaseConnectionRepository;
 import ua.com.juja.serzh.sqlcmd.dao.repository.UserActionRepository;
-import ua.com.juja.serzh.sqlcmd.service.DatabaseService;
 import ua.com.juja.serzh.sqlcmd.service.Service;
 
 import java.util.*;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 

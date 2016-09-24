@@ -26,7 +26,6 @@
         <constructor-arg value="ua.com.juja.serzh.sqlcmd.dao.repository.UserActionRepository"/>
     </bean>
 
-
     <bean id="manager" class="org.mockito.Mockito" factory-method="mock">
         <constructor-arg value="ua.com.juja.serzh.sqlcmd.dao.databaseManager.DatabaseManager"/>
     </bean>

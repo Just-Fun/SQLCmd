@@ -43,7 +43,7 @@ public class DatabaseManagerTest {
     @Test
     public void testGetAllTableNames() {
         Set<String> tables = manager.getTableNames();
-        assertEquals("[users, users2, test1]", tables.toString());
+        assertEquals("[users, test1, users2]", tables.toString());
     }
 
     @Test
@@ -307,6 +307,20 @@ public class DatabaseManagerTest {
         updateData.put("password", "qwerty");
         updateData.put("id", "1");
         //then
-        manager.update("nonExistTable", "", "",  updateData);
+        manager.update("nonExistTable", "", "", updateData);
+    }
+
+    @Test
+    public void testGetters() {
+        assertEquals(DATABASE, manager.getDatabaseName());
+        assertEquals(USER, manager.getUserName());
+    }
+
+    @Test
+    public void testClearDatabase() {
+        manager.clearDatabase(DATABASE);
+        LinkedHashSet<String> emptySet = new LinkedHashSet<>();
+        assertEquals(emptySet, manager.getTableNames());
+        setup.createTablesWithData(manager);
     }
 }

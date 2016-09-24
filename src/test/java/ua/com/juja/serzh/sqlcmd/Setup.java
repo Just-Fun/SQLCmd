@@ -66,7 +66,7 @@ public class Setup {
         }
     }
 
-    private static void createTablesWithData(DatabaseManager manager) {
+    public static void createTablesWithData(DatabaseManager manager) {
         manager.createTable("users" +
                 " (name VARCHAR (50) UNIQUE NOT NULL, password VARCHAR (50) NOT NULL, id SERIAL PRIMARY KEY)");
         manager.createTable("test1 (id SERIAL PRIMARY KEY)");

@@ -2,16 +2,10 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
-       xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
                            http://www.springframework.org/schema/context
-                           http://www.springframework.org/schema/context/spring-context-3.2.xsd
-                           http://www.springframework.org/schema/tx
-                           http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
-                           http://www.springframework.org/schema/data/jpa
-                           http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+                           http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
 
     <context:annotation-config/>
@@ -29,70 +23,5 @@
     <bean id="manager" class="org.mockito.Mockito" factory-method="mock">
         <constructor-arg value="ua.com.juja.serzh.sqlcmd.dao.databaseManager.DatabaseManager"/>
     </bean>
-
-   <!-- <bean id="mockDatabaseConnectionRepository" class="org.mockito.Mockito" factory-method="mock">
-        <constructor-arg value="ua.com.juja.serzh.sqlcmd.dao.repository.DatabaseConnectionRepository"/>
-    </bean>-->
-
-    <!--<context:annotation-config/>
-    <context:component-scan base-package="ua.com.juja.serzh.sqlcmd.service"/>
-
-    <jpa:repositories base-package="ua.com.juja.serzh.sqlcmd.dao.repository"
-                      entity-manager-factory-ref="emf"/>
-
-    <bean id="emf"
-          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="packagesToScan" value="ua.com.juja.serzh.sqlcmd.dao.entity"/>
-        <property name="dataSource" ref="logDataSource"/>
-
-        <property name="jpaProperties">
-            <props>
-                <prop key="hibernate.show_sql">true</prop>
-                <prop key="hibernate.hbm2ddl.auto">validate</prop>
-                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-            </props>
-        </property>
-
-        <property name="persistenceProvider">
-            <bean class="org.hibernate.jpa.HibernatePersistenceProvider"/>
-        </property>
-    </bean>
-
-    <tx:annotation-driven transaction-manager="transactionManager"/>
-
-    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-        <property name="dataSource" ref="logDataSource"/>
-    </bean>
-
-    <bean id="service" class="ua.com.juja.serzh.sqlcmd.service.DatabaseService">
-        <lookup-method name="getManager" bean="managerMock"/>
-        &lt;!&ndash;<property name="UserActionRepository" ref="mockUserActions"/>&ndash;&gt;
-    </bean>
-
-    &lt;!&ndash;<bean id="mockUserActions" class="org.mockito.Mockito" factory-method="mock">
-        <constructor-arg value="ua.com.juja.serzh.sqlcmd.dao.repository.UserActionRepository"/>
-    </bean>&ndash;&gt;
-
-
-    <bean id="logDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-        <property name="driverClassName" value="${log.jdbc.driverClassName}"/>
-        <property name="url" value="${log.jdbc.url}"/>
-        <property name="username" value="${log.jdbc.username}"/>
-        <property name="password" value="${log.jdbc.password}"/>
-    </bean>
-
-    <context:property-placeholder location="classpath:log.jdbc.properties"/>
-
-     <bean id="managerMock" class="org.mockito.Mockito" factory-method="mock">
-         <constructor-arg value="ua.com.juja.serzh.sqlcmd.dao.databaseManager.DatabaseManager"/>
-     </bean>
-
- &lt;!&ndash;   <bean id="UserActionRepository" class="org.mockito.Mockito" factory-method="mock">
-        <constructor-arg value="ua.com.juja.serzh.sqlcmd.dao.repository.UserActionRepository"/>
-    </bean>&ndash;&gt;
-
-   &lt;!&ndash; <bean id="manager" class="ua.com.juja.serzh.sqlcmd.daoervice.MockitoFactoryBean">
-        <constructor-arg value="ua.com.juja.serzh.sqlcmd.daoatabaseManager.DatabaseManager"/>
-    </bean>&ndash;&gt;-->
 
 </beans>

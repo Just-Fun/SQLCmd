@@ -15,9 +15,8 @@ import ua.com.juja.serzh.sqlcmd.dao.repository.UserActionRepository;
 import java.util.*;
 
 @Component
-@Transactional //?
+@Transactional
 public abstract class DatabaseService implements Service {
-
 
     protected abstract DatabaseManager getManager();
 

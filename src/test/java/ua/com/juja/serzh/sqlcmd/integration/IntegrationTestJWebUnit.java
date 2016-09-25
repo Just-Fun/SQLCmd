@@ -8,6 +8,7 @@ import ua.com.juja.serzh.sqlcmd.dao.databaseManager.PostgreSQLManager;
 import static net.sourceforge.jwebunit.junit.JWebUnit.*;
 
 @Ignore
+// TODO if time, sort out
 public class IntegrationTestJWebUnit {
     private static DatabaseManager manager;
 

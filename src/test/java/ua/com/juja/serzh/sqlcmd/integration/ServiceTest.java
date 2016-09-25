@@ -21,11 +21,11 @@ public class ServiceTest {
 
     @Autowired
     private Service service;
-    private DatabaseManager manager;
-    private Setup login;
+    private static DatabaseManager manager;
+    private static Setup login;
 
     @BeforeClass
-    public void setup() {
+    public static void setup() {
         manager = new PostgreSQLManager();
         login = new Setup();
     }

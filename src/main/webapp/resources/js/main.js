@@ -120,8 +120,8 @@ function init(ctx) {
 //                        $('#actions .container script').children().detach();
 //                        $('#actions .container script').detach();
 //                        $('#actions script').children().detach();
-
-                        $('#actions script').tmpl(elements).appendTo('#actions .container'); // !!!
+// TODO remove all in script before append
+                        $('#actions script').tmpl(elements).appendTo('#actions .container');
                     });
                 });
             });

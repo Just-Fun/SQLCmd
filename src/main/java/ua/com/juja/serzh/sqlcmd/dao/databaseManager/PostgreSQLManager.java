@@ -74,7 +74,7 @@ public class PostgreSQLManager implements DatabaseManager {
             try {
                 connection.close();
                 connection = null;
-                template = null; // ? TODO
+                template = null;
             } catch (SQLException e) {
                 throw new DatabaseManagerException(ERROR, e);
             }

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.FactoryBean;
 /**
  * Created by Serzh on 9/22/16.
  */
-// just in case
+// just in case :)
 public class MockitoFactoryBean<T> implements FactoryBean {
 
     private Class<T> classToBeMocked;

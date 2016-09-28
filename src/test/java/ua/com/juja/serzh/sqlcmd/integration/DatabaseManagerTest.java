@@ -22,10 +22,11 @@ public class DatabaseManagerTest {
 
     private static Setup setup = new Setup();
     private final static String DATABASE = "sqlcmd5hope5never5exist";
-    private final static String USER = setup.getUser();
-    private final static String PASSWORD = setup.getPassword();
+    private final String USER = setup.getUser();
+    private final String PASSWORD = setup.getPassword();
 
-    private final String SQL_QUERY_CREATE_TABLE_1 = "test1(id SERIAL NOT NULL PRIMARY KEY,username varchar(225) NOT NULL UNIQUE, password varchar(225))";
+    private final String SQL_QUERY_CREATE_TABLE_1 = "test1(id SERIAL NOT NULL PRIMARY KEY," +
+            "username varchar(225) NOT NULL UNIQUE, password varchar(225))";
     private final String TABLE_1 = "users";
 
     @BeforeClass

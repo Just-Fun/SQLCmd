@@ -67,11 +67,10 @@ public class Setup {
     }
 
     public void createTablesWithData(DatabaseManager manager) {
-        manager.createTable("users" +
-                " (name VARCHAR (50) UNIQUE NOT NULL, password VARCHAR (50) NOT NULL, id SERIAL PRIMARY KEY)");
+        manager.createTable("users (name VARCHAR (50) UNIQUE NOT NULL, password VARCHAR (50) NOT NULL, id SERIAL PRIMARY KEY)");
         manager.createTable("test1 (id SERIAL PRIMARY KEY)");
-        manager.createTable("users2" +
-                " (id SERIAL NOT NULL PRIMARY KEY,username varchar(225) NOT NULL UNIQUE, password varchar(225))");
+        manager.createTable("users2 (id SERIAL NOT NULL PRIMARY KEY,username varchar(225) NOT NULL UNIQUE, password varchar(225))");
+
         Map<String, Object> dataSet = new LinkedHashMap<>();
         dataSet.put("name", "Vasia");
         dataSet.put("password", "****");

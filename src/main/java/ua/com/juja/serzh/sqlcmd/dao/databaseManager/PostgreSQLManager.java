@@ -97,7 +97,7 @@ public class PostgreSQLManager implements DatabaseManager {
 
     @Override
     public int getTableSize(String tableName) {
-        return template.queryForObject("SELECT COUNT(*) FROM public." + tableName, Integer.class);
+        return template.queryForObject(String.format("SELECT COUNT(*) FROM public.%s", tableName), Integer.class);
     }
 
     @Override
@@ -117,16 +117,13 @@ public class PostgreSQLManager implements DatabaseManager {
 
     @Override
     public void clear(String tableName) {
-        template.execute("DELETE FROM public." + tableName);
+        template.execute(String.format("DELETE FROM public.%s", tableName));
     }
-   /* @Override
-    public void clear(String tableName) {
-        template.update(String.format("DELETE FROM public.%s", tableName));
-    }*/
 
     @Override
     public Set<String> getTableColumns(String tableName) {
-        return new LinkedHashSet<>(template.query("SELECT * FROM information_schema.columns WHERE table_schema = 'public' AND table_name = '" + tableName + "'",
+        return new LinkedHashSet<>(template.query(String.format("SELECT * FROM information_schema.columns " +
+                        "WHERE table_schema = 'public' AND table_name = '%s'", tableName),
                 (rs, rowNum) -> rs.getString("column_name")
         ));
     }

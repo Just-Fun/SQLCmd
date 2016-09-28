@@ -13,7 +13,6 @@
     <mvc:annotation-driven/>
 
     <mvc:resources mapping="/resources/**" location="/resources/" />
-    <mvc:resources mapping="/favicon.ico" location="/resources/favicon.ico" />
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/view/" />

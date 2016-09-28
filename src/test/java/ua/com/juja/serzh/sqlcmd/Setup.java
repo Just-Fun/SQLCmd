@@ -11,15 +11,15 @@ import java.util.Properties;
 public class Setup {
     private final static String PROPERTIES_FILE = "src/test/resources/test-config.properties";
 
-    private static String database;
-    private static String user;
-    private static String password;
+    private String database;
+    private String user;
+    private String password;
 
     public Setup() {
         loadProperties();
     }
 
-    private static void loadProperties() {
+    private void loadProperties() {
         Properties property = new Properties();
         try (FileInputStream fis = new FileInputStream(PROPERTIES_FILE)) {
             property.load(fis);
@@ -66,7 +66,7 @@ public class Setup {
         }
     }
 
-    public static void createTablesWithData(DatabaseManager manager) {
+    public void createTablesWithData(DatabaseManager manager) {
         manager.createTable("users" +
                 " (name VARCHAR (50) UNIQUE NOT NULL, password VARCHAR (50) NOT NULL, id SERIAL PRIMARY KEY)");
         manager.createTable("test1 (id SERIAL PRIMARY KEY)");

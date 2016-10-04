@@ -19,8 +19,8 @@
     <body>
     <header class="container">
         <div class="row">
-            <h1 class="col-sm-4">SQLCmd</h1>
-            <nav class="col-sm-8 text-right">
+            <h2 class="col-sm-1">SQLCmd</h1>
+            <nav class="col-sm-11 text-right">
                 <p>newest</p>
                 <p>catalogue</p>
                 <p>contact</p>

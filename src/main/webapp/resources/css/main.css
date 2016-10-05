@@ -30,7 +30,17 @@ header nav {
   justify-content: flex-end;
 }
 
-header p {
+header a {
   padding: 0 20px;
   margin: 0;
+}
+
+footer {
+  font-size: 12px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #fff;
 }

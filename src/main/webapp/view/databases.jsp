@@ -5,9 +5,9 @@
     <div>Existing databases:</div>
     <div class="container">
         <script template type="text/x-jquery-tmpl">
-        <ul>
-            <li>{{= $data}}</li>
-        </ul>
+            <dl>
+                <dt>{{= $data}}</li>
+            </dl>
         </script>
     </div>
 </div>

@@ -13,5 +13,4 @@
             </tr>
         </script>
     </table>
-    <a href="main#/tables">tables</a></br>
 </div>

@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <div id="actions">
+<div>Existing databases:</div>
     <table border="1" class="container">
         <tr>
             <td>Username</td>

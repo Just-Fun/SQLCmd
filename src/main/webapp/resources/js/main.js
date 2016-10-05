@@ -102,26 +102,11 @@ function init(ctx) {
 
                 $.get(ctx + "/actions/content", function(elements) {
                     $("#loading").hide(300, function() {
-//                        $('#actions .container').children().not(':first').remove();
-//                        $('#actions').children().not(':first').remove();
-//                        $('#actions .container script').children().remove();
-//                        $('#actions .container').children().remove();
-//                        $('#actions .container').children().not(':first').remove();
-//                        $('#actions .container').html('');
-//                        $('#actions .container').find('.container').remove();
-//                        $('#actions .container').find('.container').contents().unwrap();
-//                        $('#actions .container script').empty();
-//                        $('#actions .container script').replaceWith("");
-//                        $('#actions .container').replaceWith("");
-//                        $('#actions .container').removeData();
-//                        $("").replaceAll('#actions .container');
-//                        $('#actions .container script').children().remove();
-//                        $('#actions .container').children().detach();
-//                        $('#actions .container script').children().detach();
-//                        $('#actions .container script').detach();
-//                        $('#actions script').children().detach();
-// TODO remove all in script before append
+// TODO remove all in container before append
+//                        $('#actions container').empty();
+//                        $('#actions #actionsScript').tmpl(elements).appendTo('#actions .container');
                         $('#actions script').tmpl(elements).appendTo('#actions .container');
+
                     });
                 });
             });

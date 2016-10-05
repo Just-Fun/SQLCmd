@@ -12,6 +12,7 @@
         <script type="text/javascript" src="${ctx}/resources/js/main.js"></script>
         <script type="text/javascript">
             $(window).load(function(){
+            <%--$(document).ready(function(){--%>
                 init('${ctx}');
             });
         </script>

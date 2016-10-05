@@ -103,10 +103,7 @@ function init(ctx) {
                 $.get(ctx + "/actions/content", function(elements) {
                     $("#loading").hide(300, function() {
 // TODO remove all in container before append
-//                        $('#actions container').empty();
-//                        $('#actions #actionsScript').tmpl(elements).appendTo('#actions .container');
                         $('#actions script').tmpl(elements).appendTo('#actions .container');
-
                     });
                 });
             });

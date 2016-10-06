@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <div id="table">
+<div id= "tableName"></div>
     <table border="1" class="container">
         <script template type="text/x-jquery-tmpl">
             <tr>

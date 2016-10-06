@@ -112,6 +112,8 @@ function init(ctx) {
     var initTable = function(tableName) {
         isConnected("table/" + tableName, function() {
             show('#table');
+            // TODO why tableName change only after reload page?
+            $("#tableName").replaceWith("Table <strong>" + tableName + "</strong> :");
 
             $.get(ctx + '/table/' + tableName + '/content', function(elements) {
                 $('#loading').hide(300, function() {

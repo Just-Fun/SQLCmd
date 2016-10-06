@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<div id="connecting-form">
+<div id="connecting-form" class="col-md-4 col-md-offset-4">
+<div>connect to a database, which will work:</div>
     <table>
         <tr>
             <td>Database name</td>

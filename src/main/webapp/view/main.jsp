@@ -20,8 +20,8 @@
     <body>
         <header class="container">
             <div class="row">
-                <h2 class="col-sm-1">SQLCmd</h2>
-                <nav class="col-sm-11 text-right">
+                <h2 class="col-sm-3">SQLCmd</h2>
+                <nav class="col-sm-9 text-right">
                     <a href="main#/menu">menu</a></br>
                     <a href="main#/connect">connect</a></br>
                     <a href="main#/tables">tables</a></br>

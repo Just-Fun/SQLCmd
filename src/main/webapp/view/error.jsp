@@ -6,6 +6,5 @@
     </head>
     <body>
         Joks! Something went wrong: ${message}<br>
-        <%@include file="footer.jsp" %>
     </body>
 </html>

@@ -5,7 +5,7 @@
     <div>Existing commands:</div>
         <dl class="container">
             <script template="row" type="text/x-jquery-tmpl">
-                <a href="#/{{= command}}">{{= command}}</a></br>
+                <a class="text-primary" href="#/{{= command}}">{{= command}}</a></br>
                 <dd>{{= description}}</dd>
             </script>
         </dl>

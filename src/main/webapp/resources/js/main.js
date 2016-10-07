@@ -113,13 +113,13 @@ function init(ctx) {
     var initTable = function(tableName) {
         isConnected("table/" + tableName, function() {
             show('#table');
-            // TODO why tableName change only after reload page?
-            $("#tableName").replaceWith("Table <strong>" + tableName + "</strong> :");
-//            $("#tableName").html("Table <strong>" + tableName + "</strong> :");
 
             $.get(ctx + '/table/' + tableName + '/content', function(elements) {
                 $('#loading').hide(300, function() {
+                    $('#tableName').empty();
+                    $('#tableName').append('Table <strong>' + tableName + '</strong> :');
                     $('#table script').tmpl(elements).appendTo('#table .container');
+                    $('tr').first().css( "font-weight", "bold" );
                 });
             });
         });

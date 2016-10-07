@@ -57,6 +57,7 @@ function init(ctx) {
 
     var show = function(selector) {
         var component = $(selector);
+//        component.find('.container').children().not(':first').remove();
         component.find('.container').children().not(':first').remove();
         component.show();
     }
@@ -102,7 +103,7 @@ function init(ctx) {
 
                 $.get(ctx + "/actions/content", function(elements) {
                     $("#loading").hide(300, function() {
-// TODO remove all in container before append
+                        $('#actions .container tr').slice(1).remove();
                         $('#actions script').tmpl(elements).appendTo('#actions .container');
                     });
                 });
@@ -114,6 +115,7 @@ function init(ctx) {
             show('#table');
             // TODO why tableName change only after reload page?
             $("#tableName").replaceWith("Table <strong>" + tableName + "</strong> :");
+//            $("#tableName").html("Table <strong>" + tableName + "</strong> :");
 
             $.get(ctx + '/table/' + tableName + '/content', function(elements) {
                 $('#loading').hide(300, function() {

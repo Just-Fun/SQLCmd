@@ -65,7 +65,7 @@ public class PostgreSQLManager implements DatabaseManager {
             connection = null;
             template = null;
             throw new DatabaseManagerException(
-                    String.format("Cant get connection for dao:%s user:%s", database, userName), e);
+                    String.format("Cant get connection for db:%s user:%s", database, userName), e);
         }
     }
 

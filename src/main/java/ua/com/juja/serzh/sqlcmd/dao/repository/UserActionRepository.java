@@ -8,6 +8,6 @@ import ua.com.juja.serzh.sqlcmd.dao.entity.UserAction;
 
 public interface UserActionRepository extends PagingAndSortingRepository<UserAction, Integer>, UserActionRepositoryCustom {
 
-    @Query(value = "SELECT ua FROM UserAction ua ORDER BY date DESC")
+    @Query(value = "SELECT ua FROM UserAction ua ORDER BY id DESC")
     Page<UserAction> findAll(Pageable pageable);
 }

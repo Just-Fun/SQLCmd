@@ -10,9 +10,6 @@ import java.util.Set;
 public class Temp {
 
     public static void main(String[] args) {
-        PostgreSQLManager manager = new PostgreSQLManager();
-        manager.connect("", "postgres", "postgres");
-        Set<String> databases = manager.getDatabases();
-        databases.forEach(System.out::println);
+
     }
 }

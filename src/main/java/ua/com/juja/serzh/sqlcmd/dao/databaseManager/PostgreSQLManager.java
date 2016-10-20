@@ -128,7 +128,6 @@ public class PostgreSQLManager implements DatabaseManager {
         ));
     }
 
-
     @Override
     public void createDatabase(String database) {
         template.execute(String.format("CREATE DATABASE %s", database));

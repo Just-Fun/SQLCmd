@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>juja.com.ua.serzh</groupId>
+    <groupId>serzh.juja.com.ua</groupId>
     <artifactId>sqlcmd</artifactId>
     <version>1.0-SNAPSHOT</version>
 
@@ -163,22 +163,6 @@
             <version>2.26.0</version>
             <scope>test</scope>
         </dependency>
-
-        <!--?-->
-        <dependency>
-            <groupId>net.sourceforge.jwebunit</groupId>
-            <artifactId>jwebunit-htmlunit-plugin</artifactId>
-            <version>3.3</version>
-            <scope>test</scope>
-        </dependency>
-        <!--<dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.0.6</version>
-            <scope>test</scope>
-        </dependency>-->
-
-
 
         <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-slf4j-impl -->
         <dependency>
